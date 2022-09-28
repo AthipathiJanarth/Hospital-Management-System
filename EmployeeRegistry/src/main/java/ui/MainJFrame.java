@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ui.employeeregistry;
+package ui;
 
 /**
  *
@@ -46,6 +46,11 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         viewBtn.setText("VIew/Modify");
+        viewBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewBtnActionPerformed(evt);
+            }
+        });
 
         searchBtn.setText("Search");
 
@@ -92,7 +97,7 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 930, Short.MAX_VALUE)
+            .addComponent(splitPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,10 +108,15 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
-        // TODO add your handling code here:
-        createPanel createEmpPanel = new createPanel();
+       createPanel createEmpPanel = new createPanel();
        splitPane.setRightComponent(createEmpPanel);
     }//GEN-LAST:event_createBtnActionPerformed
+
+    private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
+        // TODO add your handling code here:
+        DisplayPanel displayPanel= new DisplayPanel();
+        splitPane.setRightComponent(displayPanel);
+    }//GEN-LAST:event_viewBtnActionPerformed
 
     /**
      * @param args the command line arguments

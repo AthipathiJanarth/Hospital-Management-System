@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 
-package ui.employeeregistry;
+package ui;
 
 /**
  *
@@ -14,8 +14,7 @@ public class DisplayPanel extends javax.swing.JPanel {
     /** Creates new form createPanel */
     public DisplayPanel() {
         initComponents();
-        btnGrpGender.add(radioMale);
-        btnGrpGender.add(radioFemale);
+      
     }
 
     /** This method is called from within the constructor to
@@ -39,19 +38,16 @@ public class DisplayPanel extends javax.swing.JPanel {
         labelPosition = new javax.swing.JLabel();
         labelMobile = new javax.swing.JLabel();
         labelEmail = new javax.swing.JLabel();
-        labelPhoto = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        txtEmployeeID = new javax.swing.JTextField();
-        txtEmployeeID1 = new javax.swing.JTextField();
-        txtEmployeeID2 = new javax.swing.JTextField();
-        txtEmployeeID3 = new javax.swing.JTextField();
-        txtEmployeeID4 = new javax.swing.JTextField();
-        txtEmployeeID5 = new javax.swing.JTextField();
-        txtEmployeeID6 = new javax.swing.JTextField();
-        txtEmployeeID7 = new javax.swing.JTextField();
-        addBtn = new javax.swing.JButton();
-        radioMale = new javax.swing.JRadioButton();
-        radioFemale = new javax.swing.JRadioButton();
+        label_displayName = new javax.swing.JLabel();
+        label_displayEmpID = new javax.swing.JLabel();
+        label_displayAge = new javax.swing.JLabel();
+        label_displayGender = new javax.swing.JLabel();
+        label_displayDate = new javax.swing.JLabel();
+        label_displayLevel = new javax.swing.JLabel();
+        label_displayTeamInfo = new javax.swing.JLabel();
+        label_displayPosition = new javax.swing.JLabel();
+        label_displayPhone = new javax.swing.JLabel();
+        label_displayEmail = new javax.swing.JLabel();
 
         labelCreate.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         labelCreate.setText("Employee Details");
@@ -77,36 +73,25 @@ public class DisplayPanel extends javax.swing.JPanel {
 
         labelEmail.setText("Email ID");
 
-        labelPhoto.setText("Photo");
+        label_displayName.setToolTipText("");
 
-        txtName.setToolTipText("");
+        label_displayEmpID.setToolTipText("");
 
-        txtEmployeeID.setToolTipText("");
+        label_displayAge.setToolTipText("");
 
-        txtEmployeeID1.setToolTipText("");
+        label_displayGender.setToolTipText("");
 
-        txtEmployeeID2.setToolTipText("");
+        label_displayDate.setToolTipText("");
 
-        txtEmployeeID3.setToolTipText("");
+        label_displayLevel.setToolTipText("");
 
-        txtEmployeeID4.setToolTipText("");
+        label_displayTeamInfo.setToolTipText("");
 
-        txtEmployeeID5.setToolTipText("");
+        label_displayPosition.setToolTipText("");
 
-        txtEmployeeID6.setToolTipText("");
+        label_displayPhone.setToolTipText("");
 
-        txtEmployeeID7.setToolTipText("");
-
-        addBtn.setText("Add Employee");
-
-        radioMale.setText("Male");
-        radioMale.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioMaleActionPerformed(evt);
-            }
-        });
-
-        radioFemale.setText("Female");
+        label_displayEmail.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -126,29 +111,22 @@ public class DisplayPanel extends javax.swing.JPanel {
                             .addComponent(labelTeamInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelMobile, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(81, 81, 81)
+                            .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(125, 125, 125)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtEmployeeID, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEmployeeID1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEmployeeID2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEmployeeID3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEmployeeID4, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEmployeeID5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEmployeeID6, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEmployeeID7, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(radioMale)
-                                .addGap(18, 18, 18)
-                                .addComponent(radioFemale))))
-                    .addComponent(labelCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(125, 125, 125)))
-                .addContainerGap(379, Short.MAX_VALUE))
+                            .addComponent(label_displayName, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_displayEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_displayAge, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_displayGender, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_displayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_displayLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_displayTeamInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_displayPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_displayPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_displayEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9))
+                    .addComponent(labelCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(370, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,59 +136,49 @@ public class DisplayPanel extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label_displayName))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label_displayEmpID))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAge, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label_displayAge))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelGender, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(radioMale)
-                    .addComponent(radioFemale))
+                    .addComponent(label_displayGender))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeID3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label_displayDate))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label_displayLevel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelTeamInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeID4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label_displayTeamInfo))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeID5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label_displayPosition))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelMobile, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeID6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label_displayPhone))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmployeeID7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(labelPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(addBtn)
-                .addGap(30, 30, 30))
+                    .addComponent(label_displayEmail))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void radioMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMaleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioMaleActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addBtn;
     private javax.swing.ButtonGroup btnGrpGender;
     private javax.swing.JLabel labelAge;
     private javax.swing.JLabel labelCreate;
@@ -220,21 +188,19 @@ public class DisplayPanel extends javax.swing.JPanel {
     private javax.swing.JLabel labelLevel;
     private javax.swing.JLabel labelMobile;
     private javax.swing.JLabel labelName;
-    private javax.swing.JLabel labelPhoto;
     private javax.swing.JLabel labelPosition;
     private javax.swing.JLabel labelStartDate;
     private javax.swing.JLabel labelTeamInfo;
-    private javax.swing.JRadioButton radioFemale;
-    private javax.swing.JRadioButton radioMale;
-    private javax.swing.JTextField txtEmployeeID;
-    private javax.swing.JTextField txtEmployeeID1;
-    private javax.swing.JTextField txtEmployeeID2;
-    private javax.swing.JTextField txtEmployeeID3;
-    private javax.swing.JTextField txtEmployeeID4;
-    private javax.swing.JTextField txtEmployeeID5;
-    private javax.swing.JTextField txtEmployeeID6;
-    private javax.swing.JTextField txtEmployeeID7;
-    private javax.swing.JTextField txtName;
+    private javax.swing.JLabel label_displayAge;
+    private javax.swing.JLabel label_displayDate;
+    private javax.swing.JLabel label_displayEmail;
+    private javax.swing.JLabel label_displayEmpID;
+    private javax.swing.JLabel label_displayGender;
+    private javax.swing.JLabel label_displayLevel;
+    private javax.swing.JLabel label_displayName;
+    private javax.swing.JLabel label_displayPhone;
+    private javax.swing.JLabel label_displayPosition;
+    private javax.swing.JLabel label_displayTeamInfo;
     // End of variables declaration//GEN-END:variables
 
 }

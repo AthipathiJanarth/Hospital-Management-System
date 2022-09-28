@@ -16,10 +16,23 @@ public class employeeDetails {
     private int age;
     private String gender;
     private Date startDate;
-    private int level;
+    private String level;
     private String teamInfo;
     private String positionTitle;
     private Image profilePhoto; 
     private contactInfo contact;
     
+    
+    public void setEmployeeDetails(String name,String empID,int empAge,String empGender,Date date,String empLevel,String empTeam,String empPosition, String empPhone, String empEmail){
+        Name=name;
+        employeeID=empID;
+        age=empAge;
+        gender=empGender;
+        startDate=date;
+        level=empLevel;
+        teamInfo=empTeam;
+        positionTitle=empPosition;
+        contactInfo contactDetails=new contactInfo();
+        contactDetails.setContactDetails(empPhone, empEmail);
+    }
 }
