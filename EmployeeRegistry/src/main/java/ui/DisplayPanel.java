@@ -5,6 +5,8 @@
 
 package ui;
 
+import models.employeeDirectory;
+
 /**
  *
  * @author athipathi
@@ -12,7 +14,7 @@ package ui;
 public class DisplayPanel extends javax.swing.JPanel {
 
     /** Creates new form createPanel */
-    public DisplayPanel() {
+    public DisplayPanel(employeeDirectory empList) {
         initComponents();
       
     }

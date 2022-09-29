@@ -4,6 +4,9 @@
  */
 package ui;
 
+import javax.swing.table.DefaultTableModel;
+import models.contactInfo;
+import models.employeeDetails;
 import models.employeeDirectory;
 
 /**
@@ -12,12 +15,34 @@ import models.employeeDirectory;
  */
 public class ViewPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ViewPanel
-     */
+    employeeDirectory employeeList;
     public ViewPanel(employeeDirectory empList) {
         initComponents();
-        
+        employeeList = empList;
+        displayEmployees();
+    }
+    
+    public void displayEmployees(){
+         DefaultTableModel model = (DefaultTableModel) empTable.getModel();
+         model.setRowCount(0);         
+         for(employeeDetails emp: employeeList.getEmployeeList())
+         {
+             Object[] row = new Object[11];
+             row[0]=emp.getEmployeeID();
+             row[1]=emp.getName();
+             row[2]=emp.getAge();
+             row[3]=emp.getGender();
+             row[4]=emp.getStartDate();
+             row[5]=emp.getLevel();
+             row[6]=emp.getTeamInfo();
+             row[7]=emp.getPositionTitle();
+             contactInfo contactDetails= emp.getContact();
+             row[8]= contactDetails.getPhoneNumber();
+             row[9]= contactDetails.getEmailID();
+             row[10]=emp.getProfilePhoto();
+             
+             model.addRow(row);
+         }
     }
 
     /**
@@ -31,24 +56,61 @@ public class ViewPanel extends javax.swing.JPanel {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         listPanel = new javax.swing.JPanel();
-        displayPanel1 = new ui.DisplayPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        empTable = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+
+        empTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Employee ID", "Employee Name", "Age", "Gender", "Start Date", "Level", "Team Info", "Position ", "Phone Number", "Email", "Photo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true, true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        empTable.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(empTable);
+        empTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (empTable.getColumnModel().getColumnCount() > 0) {
+            empTable.getColumnModel().getColumn(6).setResizable(false);
+            empTable.getColumnModel().getColumn(10).setResizable(false);
+        }
 
         javax.swing.GroupLayout listPanelLayout = new javax.swing.GroupLayout(listPanel);
         listPanel.setLayout(listPanelLayout);
         listPanelLayout.setHorizontalGroup(
             listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 801, Short.MAX_VALUE)
+            .addGroup(listPanelLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         listPanelLayout.setVerticalGroup(
             listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 657, Short.MAX_VALUE)
+            .addGroup(listPanelLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(214, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab1", listPanel);
-        jTabbedPane1.addTab("tab4", displayPanel1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -81,8 +143,9 @@ public class ViewPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ui.DisplayPanel displayPanel1;
+    private javax.swing.JTable empTable;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel listPanel;
     // End of variables declaration//GEN-END:variables

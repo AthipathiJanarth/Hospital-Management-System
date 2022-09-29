@@ -103,7 +103,7 @@ public class employeeDetails {
     }
     
     
-    public void setEmployeeDetails(String name,String empID,int empAge,String empGender,String date,String empLevel,String empTeam,String empPosition, String empPhone, String empEmail){
+    public void setEmployeeDetails(String name,String empID,int empAge,String empGender,String date,String empLevel,String empTeam,String empPosition){
         Name=name;
         employeeID=empID;
         age=empAge;
@@ -112,7 +112,6 @@ public class employeeDetails {
         level=empLevel;
         teamInfo=empTeam;
         positionTitle=empPosition;
-        contactInfo contactDetails=new contactInfo();
-        contactDetails.setContactDetails(empPhone, empEmail);
+        
     }
 }

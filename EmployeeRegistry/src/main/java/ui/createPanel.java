@@ -337,21 +337,12 @@ public class createPanel extends javax.swing.JPanel {
         if(validateFields()){            
             contact = new contactInfo();
             employee= new employeeDetails();
-            //employee.setEmployeeDetails(txtName.getText(), txtEmployeeID.getText(), Integer.parseInt(txtAge.getText()), btnGrpGender.getSelection().getActionCommand(), txtDate.getText(), txtLevel.getText(), TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
-            employee.setName(txtName.getText());
-            employee.setAge(Integer.parseInt(txtAge.getText()));
-            employee.setEmployeeID(txtEmployeeID.getText());
-            employee.setGender(btnGrpGender.getSelection().getActionCommand());
-            employee.setPositionTitle(txtPosition.getText());
-            employee.setLevel(txtLevel.getText());
-            employee.setStartDate(txtDate.getText());
-            employee.setStartDate(txtTeamInfo.getText());
-            employee.setProfilePhoto(selectedImageFile.getAbsolutePath());           
-            contact.setContactDetails(txtPhone.getText(), txtEmail.getText());
-            employee.setContact(contact);
+            employee.setEmployeeDetails(txtName.getText(), txtEmployeeID.getText(), Integer.parseInt(txtAge.getText()), btnGrpGender.getSelection().getActionCommand(), txtDate.getText(), txtLevel.getText(), txtTeamInfo.getText(), txtPosition.getText());           
+              contact.setContactDetails(txtPhone.getText(), txtEmail.getText());
+              employee.setContact(contact);
             if(employeeList.addEmployee(employee)){
                 clearFields();
-                JOptionPane.showMessageDialog(null, employee.getName() +" profile has been created.");
+                JOptionPane.showMessageDialog(null, employee.getName() +"'s profile has been created.");
             }
         }
     }//GEN-LAST:event_addBtnActionPerformed
