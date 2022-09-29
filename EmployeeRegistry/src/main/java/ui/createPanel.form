@@ -55,6 +55,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="radioFemale" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="browseBtn" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="labelCreate" alignment="1" min="-2" pref="218" max="-2" attributes="0"/>
@@ -75,6 +76,7 @@
                   <Component id="errTxt7" min="-2" pref="224" max="-2" attributes="0"/>
                   <Component id="errTxt8" min="-2" pref="224" max="-2" attributes="0"/>
                   <Component id="errTxt9" min="-2" pref="224" max="-2" attributes="0"/>
+                  <Component id="errTxt10" min="-2" pref="224" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="41" max="32767" attributes="0"/>
           </Group>
@@ -146,9 +148,15 @@
                   <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="errTxt9" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="labelPhoto" min="-2" pref="26" max="-2" attributes="0"/>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="labelPhoto" min="-2" pref="26" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="browseBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="errTxt10" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="46" max="32767" attributes="0"/>
               <Component id="addBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
@@ -454,6 +462,31 @@
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="errTxt9.setVisible(false);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="browseBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Browse Image"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="browseBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="errTxt10">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="ff" type="rgb"/>
+        </Property>
+        <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="errTxt"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="*Please Upload an Image"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Default Cursor"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="errTxt10.setVisible(false);"/>
       </AuxValues>
     </Component>
   </SubComponents>

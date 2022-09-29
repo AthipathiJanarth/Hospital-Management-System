@@ -13,4 +13,16 @@ import java.util.ArrayList;
 public class employeeDirectory {
     
     private ArrayList<employeeDetails> employeeList;
+    
+    public boolean addEmployee(employeeDetails employee) {
+        return employeeList.add(employee);
+    }
+
+    public employeeDirectory() {
+        employeeList = new ArrayList<employeeDetails>();
+    }
+
+    public ArrayList<employeeDetails> getEmployeeList() {
+        return employeeList;
+    }   
 }

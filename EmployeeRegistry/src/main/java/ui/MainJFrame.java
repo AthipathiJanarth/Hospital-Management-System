@@ -4,19 +4,20 @@
  */
 package ui;
 
+import models.employeeDirectory;
+
 /**
  *
  * @author athipathi
  */
 public class MainJFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainJFrame
-     */
+    employeeDirectory empList;
     
     public MainJFrame() {
         initComponents();
         setTitle("Employee Registry");
+        empList = new employeeDirectory();
     }
 
     /**
@@ -108,14 +109,14 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
-       createPanel createEmpPanel = new createPanel();
+       createPanel createEmpPanel = new createPanel(empList);
        splitPane.setRightComponent(createEmpPanel);
     }//GEN-LAST:event_createBtnActionPerformed
 
     private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
         // TODO add your handling code here:
-        DisplayPanel displayPanel= new DisplayPanel();
-        splitPane.setRightComponent(displayPanel);
+        ViewPanel viewPanel= new ViewPanel(empList);
+        splitPane.setRightComponent(viewPanel);
     }//GEN-LAST:event_viewBtnActionPerformed
 
     /**

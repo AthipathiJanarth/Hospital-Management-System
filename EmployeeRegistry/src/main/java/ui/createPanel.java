@@ -1,6 +1,15 @@
 package ui;
 
+import java.awt.Image;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import models.contactInfo;
+import models.employeeDetails;
+import models.employeeDirectory;
 
 /**
  *
@@ -8,9 +17,15 @@ import javax.swing.JOptionPane;
  */
 public class createPanel extends javax.swing.JPanel {
 
-    public createPanel() {
+    employeeDetails employee;
+    contactInfo contact;
+    employeeDirectory employeeList;
+    public createPanel(employeeDirectory empList) {
         initComponents();
+        employeeList= empList;
+        radioMale.setActionCommand("Male");
         btnGrpGender.add(radioMale);
+        radioFemale.setActionCommand("Female");
         btnGrpGender.add(radioFemale);
     }
     @SuppressWarnings("unchecked")
@@ -52,6 +67,8 @@ public class createPanel extends javax.swing.JPanel {
         errTxt7 = new javax.swing.JLabel();
         errTxt8 = new javax.swing.JLabel();
         errTxt9 = new javax.swing.JLabel();
+        browseBtn = new javax.swing.JButton();
+        errTxt10 = new javax.swing.JLabel();
 
         labelCreate.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         labelCreate.setText("Create New Employee");
@@ -163,6 +180,18 @@ public class createPanel extends javax.swing.JPanel {
         errTxt9.setText("*This is a Mandatory Field");
         errTxt9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        browseBtn.setText("Browse Image");
+        browseBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                browseBtnActionPerformed(evt);
+            }
+        });
+
+        errTxt10.setForeground(new java.awt.Color(255, 51, 51));
+        errTxt10.setLabelFor(errTxt);
+        errTxt10.setText("*Please Upload an Image");
+        errTxt10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -198,7 +227,8 @@ public class createPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(radioMale)
                                 .addGap(18, 18, 18)
-                                .addComponent(radioFemale))))
+                                .addComponent(radioFemale))
+                            .addComponent(browseBtn)))
                     .addComponent(labelCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,7 +244,8 @@ public class createPanel extends javax.swing.JPanel {
                     .addComponent(errTxt6, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(errTxt7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(errTxt8, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(errTxt9, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(errTxt9, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(errTxt10, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -273,9 +304,13 @@ public class createPanel extends javax.swing.JPanel {
                     .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(errTxt9))
-                .addGap(18, 18, 18)
-                .addComponent(labelPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(browseBtn)
+                        .addComponent(errTxt10)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(addBtn)
                 .addGap(30, 30, 30))
         );
@@ -290,6 +325,7 @@ public class createPanel extends javax.swing.JPanel {
         errTxt7.setVisible(false);
         errTxt8.setVisible(false);
         errTxt9.setVisible(false);
+        errTxt10.setVisible(false);
     }// </editor-fold>//GEN-END:initComponents
 
     private void radioMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMaleActionPerformed
@@ -297,11 +333,47 @@ public class createPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_radioMaleActionPerformed
     
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        clearErrorText();
-        if(this.validateFields()){
-            
+        clearErrorText();       
+        if(validateFields()){            
+            contact = new contactInfo();
+            employee= new employeeDetails();
+            //employee.setEmployeeDetails(txtName.getText(), txtEmployeeID.getText(), Integer.parseInt(txtAge.getText()), btnGrpGender.getSelection().getActionCommand(), txtDate.getText(), txtLevel.getText(), TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
+            employee.setName(txtName.getText());
+            employee.setAge(Integer.parseInt(txtAge.getText()));
+            employee.setEmployeeID(txtEmployeeID.getText());
+            employee.setGender(btnGrpGender.getSelection().getActionCommand());
+            employee.setPositionTitle(txtPosition.getText());
+            employee.setLevel(txtLevel.getText());
+            employee.setStartDate(txtDate.getText());
+            employee.setStartDate(txtTeamInfo.getText());
+            employee.setProfilePhoto(selectedImageFile.getAbsolutePath());           
+            contact.setContactDetails(txtPhone.getText(), txtEmail.getText());
+            employee.setContact(contact);
+            if(employeeList.addEmployee(employee)){
+                clearFields();
+                JOptionPane.showMessageDialog(null, employee.getName() +" profile has been created.");
+            }
         }
     }//GEN-LAST:event_addBtnActionPerformed
+    File selectedImageFile=null;
+    private void browseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseBtnActionPerformed
+        JFileChooser browseImage = new JFileChooser();
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+        browseImage.addChoosableFileFilter(fnef);
+        int showOpenDialogue = browseImage.showOpenDialog(null);
+         
+        if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
+            selectedImageFile = browseImage.getSelectedFile();
+            String selectedImagePath = selectedImageFile.getAbsolutePath();
+            JOptionPane.showMessageDialog(null, "Are you Sure want to upload this File "+selectedImagePath);
+            //Display image on jlable
+            ImageIcon profilePicture = new ImageIcon(selectedImagePath);
+//            Resize image to fit jlabel
+            //Image image = ii.getImage().getScaledInstance(jLabelImage.getWidth(), jLabelImage.getHeight(), Image.SCALE_SMOOTH);
+             
+            //jLabelImage.setIcon(new ImageIcon(image));
+        }
+    }//GEN-LAST:event_browseBtnActionPerformed
     private boolean validateFields(){
         boolean radioSelected;
         try{
@@ -359,6 +431,18 @@ public class createPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,"Age Should be in Numbers");
             valid=false;
         }
+        if(selectedImageFile==null){
+            errTxt10.setVisible(true);
+            valid=false;
+        }
+        if(txtEmail.getText().length()<2 || !txtEmail.getText().matches("^(.+)@(\\S+)$")){
+            JOptionPane.showMessageDialog(this,"Please Enter a Valid Email");
+            valid=false;
+        }
+        if(txtDate.getText().length()<2 || txtDate.getText().matches("^(0?[1-9]|[12][0-9]|3[01])[\\/\\-](0?[1-9]|1[012])[\\/\\-]\\d{4}$")){
+            JOptionPane.showMessageDialog(this,"Please Enter a Valid Date");
+            valid=false;
+        }
         return valid;
     }
     private void  clearErrorText(){
@@ -372,12 +456,31 @@ public class createPanel extends javax.swing.JPanel {
         errTxt7.setVisible(false);
         errTxt8.setVisible(false);
         errTxt9.setVisible(false);
+        errTxt10.setVisible(false);
     }
+     private void  clearFields(){
+         txtName.setText("");
+         txtEmployeeID.setText("");
+         txtAge.setText("");
+         txtName.setText("");
+         txtName.setText("");
+         txtPhone.setText("");
+         txtEmail.setText("");
+         txtDate.setText("");
+         txtLevel.setText("");
+         txtPosition.setText("");
+         txtTeamInfo.setText("");
+         selectedImageFile=null;
+         btnGrpGender.clearSelection();
+           
+     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
+    private javax.swing.JButton browseBtn;
     private javax.swing.ButtonGroup btnGrpGender;
     private javax.swing.JLabel errTxt;
     private javax.swing.JLabel errTxt1;
+    private javax.swing.JLabel errTxt10;
     private javax.swing.JLabel errTxt2;
     private javax.swing.JLabel errTxt3;
     private javax.swing.JLabel errTxt4;

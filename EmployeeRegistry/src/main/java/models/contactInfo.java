@@ -11,7 +11,23 @@ package models;
 public class contactInfo {
     private String phoneNumber;
     private String emailID;
-    
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmailID() {
+        return emailID;
+    }
+
+    public void setEmailID(String emailID) {
+        this.emailID = emailID;
+    }
+       
     public void setContactDetails(String phoneNo,String mailID){
         phoneNumber=phoneNo;
         emailID=mailID;
