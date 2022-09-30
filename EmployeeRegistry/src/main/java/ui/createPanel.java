@@ -1,9 +1,6 @@
 package ui;
 
-import java.awt.Image;
 import java.io.File;
-import java.text.SimpleDateFormat;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -229,10 +226,9 @@ public class createPanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(radioFemale))
                             .addComponent(browseBtn)))
-                    .addComponent(labelCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(125, 125, 125)))
+                        .addComponent(labelCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(errTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -310,9 +306,9 @@ public class createPanel extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(browseBtn)
                         .addComponent(errTxt10)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addComponent(addBtn)
-                .addGap(30, 30, 30))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         errTxt.setVisible(false);
@@ -337,7 +333,7 @@ public class createPanel extends javax.swing.JPanel {
         if(validateFields()){            
             contact = new contactInfo();
             employee= new employeeDetails();
-            employee.setEmployeeDetails(txtName.getText(), txtEmployeeID.getText(), Integer.parseInt(txtAge.getText()), btnGrpGender.getSelection().getActionCommand(), txtDate.getText(), txtLevel.getText(), txtTeamInfo.getText(), txtPosition.getText());           
+            employee.setEmployeeDetails(txtName.getText(), txtEmployeeID.getText(), Integer.parseInt(txtAge.getText()), btnGrpGender.getSelection().getActionCommand(), txtDate.getText(), txtLevel.getText(), txtTeamInfo.getText(), txtPosition.getText(),selectedImageFile.getAbsolutePath());           
               contact.setContactDetails(txtPhone.getText(), txtEmail.getText());
               employee.setContact(contact);
             if(employeeList.addEmployee(employee)){
@@ -356,13 +352,7 @@ public class createPanel extends javax.swing.JPanel {
         if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
             selectedImageFile = browseImage.getSelectedFile();
             String selectedImagePath = selectedImageFile.getAbsolutePath();
-            JOptionPane.showMessageDialog(null, "Are you Sure want to upload this File "+selectedImagePath);
-            //Display image on jlable
-            ImageIcon profilePicture = new ImageIcon(selectedImagePath);
-//            Resize image to fit jlabel
-            //Image image = ii.getImage().getScaledInstance(jLabelImage.getWidth(), jLabelImage.getHeight(), Image.SCALE_SMOOTH);
-             
-            //jLabelImage.setIcon(new ImageIcon(image));
+            JOptionPane.showMessageDialog(null, "Are you Sure want to upload this File "+selectedImagePath);          
         }
     }//GEN-LAST:event_browseBtnActionPerformed
     private boolean validateFields(){

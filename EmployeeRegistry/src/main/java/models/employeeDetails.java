@@ -103,7 +103,7 @@ public class employeeDetails {
     }
     
     
-    public void setEmployeeDetails(String name,String empID,int empAge,String empGender,String date,String empLevel,String empTeam,String empPosition){
+    public void setEmployeeDetails(String name,String empID,int empAge,String empGender,String date,String empLevel,String empTeam,String empPosition,String photoPath){
         Name=name;
         employeeID=empID;
         age=empAge;
@@ -112,6 +112,6 @@ public class employeeDetails {
         level=empLevel;
         teamInfo=empTeam;
         positionTitle=empPosition;
-        
+        profilePhoto = photoPath;
     }
 }

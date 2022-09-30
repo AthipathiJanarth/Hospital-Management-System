@@ -17,7 +17,10 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         setTitle("Employee Registry");
+        setResizable(false);
         empList = new employeeDirectory();
+        ViewPanel viewPanel= new ViewPanel(empList);
+        splitPane.setRightComponent(viewPanel);
     }
 
     /**
@@ -33,10 +36,11 @@ public class MainJFrame extends javax.swing.JFrame {
         controlPanel = new javax.swing.JPanel();
         createBtn = new javax.swing.JButton();
         viewBtn = new javax.swing.JButton();
-        searchBtn = new javax.swing.JButton();
         workPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        controlPanel.setPreferredSize(new java.awt.Dimension(200, 665));
 
         createBtn.setText("Create");
         createBtn.setToolTipText("Create New Employee");
@@ -46,14 +50,12 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        viewBtn.setText("VIew/Modify");
+        viewBtn.setText("Manage Employee");
         viewBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewBtnActionPerformed(evt);
             }
         });
-
-        searchBtn.setText("Search");
 
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
@@ -63,8 +65,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(createBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(viewBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(viewBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         controlPanelLayout.setVerticalGroup(
@@ -74,9 +75,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(createBtn)
                 .addGap(31, 31, 31)
                 .addComponent(viewBtn)
-                .addGap(33, 33, 33)
-                .addComponent(searchBtn)
-                .addContainerGap(461, Short.MAX_VALUE))
+                .addContainerGap(517, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(controlPanel);
@@ -157,7 +156,6 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel controlPanel;
     private javax.swing.JButton createBtn;
-    private javax.swing.JButton searchBtn;
     private javax.swing.JSplitPane splitPane;
     private javax.swing.JButton viewBtn;
     private javax.swing.JPanel workPanel;

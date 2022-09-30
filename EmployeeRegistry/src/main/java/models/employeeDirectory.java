@@ -17,7 +17,10 @@ public class employeeDirectory {
     public boolean addEmployee(employeeDetails employee) {
         return employeeList.add(employee);
     }
-
+    public void deleteEmployee(int index) {
+         employeeList.remove(index);
+    }
+    
     public employeeDirectory() {
         employeeList = new ArrayList<employeeDetails>();
     }
