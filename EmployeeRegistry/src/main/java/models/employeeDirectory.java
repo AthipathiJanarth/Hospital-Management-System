@@ -27,5 +27,16 @@ public class employeeDirectory {
 
     public ArrayList<employeeDetails> getEmployeeList() {
         return employeeList;
-    }   
+    }
+    public void updateEmployee(employeeDetails employee){
+    for(employeeDetails emp : employeeList) {
+    if(emp!=null && employee.getEmployeeID() == emp.getEmployeeID()) {
+        emp.updateEmployeeDetails(employee.getName(), employee.getLevel(), employee.getTeamInfo(), employee.getPositionTitle());
+        contactInfo contact =new contactInfo();
+        contact.setContactDetails(employee.getContact().getPhoneNumber(), employee.getContact().getEmailID());
+        emp.setContact(contact);
+        break;
+    }
+    }
+    }
 }

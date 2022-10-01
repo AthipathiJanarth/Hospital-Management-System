@@ -333,7 +333,7 @@ public class createPanel extends javax.swing.JPanel {
         if(validateFields()){            
             contact = new contactInfo();
             employee= new employeeDetails();
-            employee.setEmployeeDetails(txtName.getText(), txtEmployeeID.getText(), Integer.parseInt(txtAge.getText()), btnGrpGender.getSelection().getActionCommand(), txtDate.getText(), txtLevel.getText(), txtTeamInfo.getText(), txtPosition.getText(),selectedImageFile.getAbsolutePath());           
+            employee.setEmployeeDetails(txtName.getText(), Integer.parseInt(txtEmployeeID.getText()), Integer.parseInt(txtAge.getText()), btnGrpGender.getSelection().getActionCommand(), txtDate.getText(), txtLevel.getText(), txtTeamInfo.getText(), txtPosition.getText(),selectedImageFile.getAbsolutePath());           
               contact.setContactDetails(txtPhone.getText(), txtEmail.getText());
               employee.setContact(contact);
             if(employeeList.addEmployee(employee)){
@@ -404,6 +404,10 @@ public class createPanel extends javax.swing.JPanel {
             errTxt3.setVisible(true);
             valid=false;
         }  
+        if(txtEmployeeID.getText().length()<1 || !txtEmployeeID.getText().matches("\\d+")){
+            JOptionPane.showMessageDialog(this,"Employee Should be in Numbers");
+            valid=false;
+        } 
         if(txtPhone.getText().length()!=10 || !txtPhone.getText().matches("\\d+")){
             JOptionPane.showMessageDialog(this,"Please Enter a Valid Phone Number");
             valid=false;

@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class employeeDetails {
     private String Name;
-    private String employeeID;
+    private int employeeID;
     private int age;
     private String gender;
     private String startDate;
@@ -30,11 +30,11 @@ public class employeeDetails {
         this.Name = Name;
     }
 
-    public String getEmployeeID() {
+    public int getEmployeeID() {
         return employeeID;
     }
 
-    public void setEmployeeID(String employeeID) {
+    public void setEmployeeID(int employeeID) {
         this.employeeID = employeeID;
     }
 
@@ -103,7 +103,7 @@ public class employeeDetails {
     }
     
     
-    public void setEmployeeDetails(String name,String empID,int empAge,String empGender,String date,String empLevel,String empTeam,String empPosition,String photoPath){
+    public void setEmployeeDetails(String name,int empID,int empAge,String empGender,String date,String empLevel,String empTeam,String empPosition,String photoPath){
         Name=name;
         employeeID=empID;
         age=empAge;
@@ -113,5 +113,11 @@ public class employeeDetails {
         teamInfo=empTeam;
         positionTitle=empPosition;
         profilePhoto = photoPath;
+    }
+    public void updateEmployeeDetails(String name,String empLevel,String empTeam,String empPosition){
+        Name=name;      
+        level=empLevel;
+        teamInfo=empTeam;
+        positionTitle=empPosition;        
     }
 }
