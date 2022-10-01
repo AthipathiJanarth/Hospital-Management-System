@@ -3,6 +3,7 @@ package ui;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JSplitPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import models.contactInfo;
 import models.employeeDetails;
@@ -17,13 +18,15 @@ public class createPanel extends javax.swing.JPanel {
     employeeDetails employee;
     contactInfo contact;
     employeeDirectory employeeList;
-    public createPanel(employeeDirectory empList) {
+    private final JSplitPane splitPane;
+    public createPanel(employeeDirectory empList,JSplitPane splitPane) {
         initComponents();
         employeeList= empList;
         radioMale.setActionCommand("Male");
         btnGrpGender.add(radioMale);
         radioFemale.setActionCommand("Female");
         btnGrpGender.add(radioFemale);
+        this.splitPane = splitPane;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -339,6 +342,8 @@ public class createPanel extends javax.swing.JPanel {
             if(employeeList.addEmployee(employee)){
                 clearFields();
                 JOptionPane.showMessageDialog(null, employee.getName() +"'s profile has been created.");
+                ViewPanel viewPanel = new ViewPanel(employeeList);
+                splitPane.setRightComponent(viewPanel);
             }
         }
     }//GEN-LAST:event_addBtnActionPerformed

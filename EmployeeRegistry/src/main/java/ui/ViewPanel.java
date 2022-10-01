@@ -66,6 +66,11 @@ public class ViewPanel extends javax.swing.JPanel {
         empTable = new javax.swing.JTable();
         btnSearch = new javax.swing.JButton();
         txt_NameSearch = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txt_EmpIDSearch = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txt_emailSearch = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         empPanel = new javax.swing.JPanel();
         labelCreate = new javax.swing.JLabel();
         labelName = new javax.swing.JLabel();
@@ -164,7 +169,17 @@ public class ViewPanel extends javax.swing.JPanel {
         }
 
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
+        txt_NameSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NameSearchActionPerformed(evt);
+            }
+        });
         txt_NameSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_NameSearchKeyPressed(evt);
@@ -174,30 +189,68 @@ public class ViewPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setText("Search by Employee Name:");
+
+        jLabel2.setText("Search by Employee ID");
+
+        txt_emailSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_emailSearchActionPerformed(evt);
+            }
+        });
+        txt_emailSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_emailSearchKeyReleased(evt);
+            }
+        });
+
+        jLabel3.setText("Search by Employee Email:");
+
         javax.swing.GroupLayout listPanelLayout = new javax.swing.GroupLayout(listPanel);
         listPanel.setLayout(listPanelLayout);
         listPanelLayout.setHorizontalGroup(
             listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(37, 37, 37)
+                .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(listPanelLayout.createSequentialGroup()
+                        .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(txt_EmpIDSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(listPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(txt_emailSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(54, 54, 54)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txt_NameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(363, 363, 363)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 758, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 758, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         listPanelLayout.setVerticalGroup(
             listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listPanelLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(17, 17, 17)
                 .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSearch)
-                    .addComponent(txt_NameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_NameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_emailSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_EmpIDSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118))
+                .addGap(132, 132, 132))
         );
 
         jTabbedPane1.addTab("tab1", listPanel);
@@ -614,7 +667,6 @@ public class ViewPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_empTableMouseClicked
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        
         employeeList.deleteEmployee(index) ;    
         JOptionPane.showMessageDialog(this,"Employee Profile has been deleted!!");
         displayEmployees(employeeList);
@@ -664,24 +716,74 @@ public class ViewPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_NameSearchKeyPressed
 
     private void txt_NameSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NameSearchKeyReleased
-       
+       txt_emailSearch.setText("");
+       txt_EmpIDSearch.setText("");
         if(!txt_NameSearch.getText().isBlank()){
              filteredList = new employeeDirectory();
              for(employeeDetails emp : employeeList.getEmployeeList()){
-                 if(emp.getName().contains(txt_NameSearch.getText())){
+                 if((emp.getName().toLowerCase()).contains(txt_NameSearch.getText().toLowerCase())){
                   filteredList.addEmployee(emp);
                  }
              }
              displayEmployees(filteredList);
              if(filteredList.getEmployeeList().isEmpty()){
                  JOptionPane.showMessageDialog(null, "No Results Found");
-             }
-             
+             }            
          }
          else{
          displayEmployees(employeeList);
          }
     }//GEN-LAST:event_txt_NameSearchKeyReleased
+
+    private void txt_NameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NameSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_NameSearchActionPerformed
+
+    private void txt_emailSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_emailSearchActionPerformed
+
+    private void txt_emailSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emailSearchKeyReleased
+        txt_NameSearch.setText("");
+        txt_EmpIDSearch.setText("");
+        if(!txt_emailSearch.getText().isBlank()){
+             filteredList = new employeeDirectory();
+             for(employeeDetails emp : employeeList.getEmployeeList()){
+                 if((emp.getName().toLowerCase()).contains(txt_emailSearch.getText().toLowerCase())){
+                  filteredList.addEmployee(emp);
+                 }
+             }
+             displayEmployees(filteredList);
+             if(filteredList.getEmployeeList().isEmpty()){
+                 JOptionPane.showMessageDialog(null, "No Results Found");
+             }             
+         }
+         else{
+         displayEmployees(employeeList);
+         }
+    }//GEN-LAST:event_txt_emailSearchKeyReleased
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+      txt_emailSearch.setText("");
+      txt_NameSearch.setText("");
+        if(!txt_EmpIDSearch.getText().isBlank() && txt_EmpIDSearch.getText().matches("\\d+")){
+             filteredList = new employeeDirectory();
+             for(employeeDetails emp : employeeList.getEmployeeList()){
+                 if(emp.getEmployeeID()==Integer.parseInt(txt_EmpIDSearch.getText())){
+                  filteredList.addEmployee(emp);
+                 }
+             }
+             displayEmployees(filteredList);
+             if(filteredList.getEmployeeList().isEmpty()){
+                 JOptionPane.showMessageDialog(null, "No Results Found");
+             }             
+         }
+         else{
+         JOptionPane.showMessageDialog(null, "Enter a Valid Employee ID");
+         txt_EmpIDSearch.setText("");
+         displayEmployees(employeeList);
+         }
+    }//GEN-LAST:event_btnSearchActionPerformed
     
     private void  clearErrorText(){
         errTxt.setVisible(false);      
@@ -761,6 +863,9 @@ public class ViewPanel extends javax.swing.JPanel {
     private javax.swing.JLabel fixed_Date;
     private javax.swing.JLabel fixed_EmpID;
     private javax.swing.JLabel fixed_Gender;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel labelAge;
@@ -803,7 +908,9 @@ public class ViewPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtPosition;
     private javax.swing.JTextField txtTeamInfo;
+    private javax.swing.JTextField txt_EmpIDSearch;
     private javax.swing.JTextField txt_NameSearch;
+    private javax.swing.JTextField txt_emailSearch;
     private javax.swing.JPanel updatePanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -125,7 +125,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
-       createPanel createEmpPanel = new createPanel(empList);
+       createPanel createEmpPanel = new createPanel(empList,splitPane);
        splitPane.setRightComponent(createEmpPanel);
     }//GEN-LAST:event_createBtnActionPerformed
 
