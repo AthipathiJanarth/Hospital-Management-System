@@ -336,7 +336,7 @@ public class createPanel extends javax.swing.JPanel {
         if(validateFields()){            
             contact = new contactInfo();
             employee= new employeeDetails();
-            employee.setEmployeeDetails(txtName.getText(), Integer.parseInt(txtEmployeeID.getText()), Integer.parseInt(txtAge.getText()), btnGrpGender.getSelection().getActionCommand(), txtDate.getText(), txtLevel.getText(), txtTeamInfo.getText(), txtPosition.getText(),selectedImageFile.getAbsolutePath());           
+            employee.setEmployeeDetails(txtName.getText(), Integer.parseInt(txtEmployeeID.getText()), Integer.parseInt(txtAge.getText()), btnGrpGender.getSelection().getActionCommand(), txtDate.getText(), Integer.parseInt(txtLevel.getText()), txtTeamInfo.getText(), txtPosition.getText(),selectedImageFile.getAbsolutePath());           
               contact.setContactDetails(txtPhone.getText(), txtEmail.getText());
               employee.setContact(contact);
             if(employeeList.addEmployee(employee)){
@@ -425,6 +425,10 @@ public class createPanel extends javax.swing.JPanel {
             errTxt10.setVisible(true);
             valid=false;
         }
+        if(txtLevel.getText().length()>2 || !txtLevel.getText().matches("\\d+")){
+            JOptionPane.showMessageDialog(this,"Please Enter Level between 1-15");
+            valid=false;
+        }  
         if(txtEmail.getText().length()<2 || !txtEmail.getText().matches("^(.+)@(\\S+)$")){
             JOptionPane.showMessageDialog(this,"Please Enter a Valid Email");
             valid=false;

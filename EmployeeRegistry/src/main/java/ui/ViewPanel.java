@@ -142,7 +142,7 @@ public class ViewPanel extends javax.swing.JPanel {
                 java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true, true, true, true, true, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -646,7 +646,7 @@ public class ViewPanel extends javax.swing.JPanel {
         contactInfo contact = new contactInfo();
         contact.setContactDetails(mobile, mail);
         emp.setContact(contact);
-        emp.setEmployeeDetails(name, Integer.parseInt(empID), Integer.parseInt(age), gender, date, level, info, position,photo);
+        emp.setEmployeeDetails(name, Integer.parseInt(empID), Integer.parseInt(age), gender, date, Integer.parseInt(level), info, position,photo);
         index=empTable.getSelectedRow();
         //to display profile
         jTabbedPane1.setSelectedIndex(1);
@@ -680,7 +680,7 @@ public class ViewPanel extends javax.swing.JPanel {
             employee= new employeeDetails();         
             contact.setContactDetails(txtPhone.getText(), txtEmail.getText());
             employee.setContact(contact);
-            employee.setEmployeeDetails(txtName.getText(), emp.getEmployeeID(), emp.getAge(), emp.getGender(), emp.getStartDate(), txtLevel.getText(), txtTeamInfo.getText(), txtPosition.getText(),emp.getProfilePhoto());
+            employee.setEmployeeDetails(txtName.getText(), emp.getEmployeeID(), emp.getAge(), emp.getGender(), emp.getStartDate(), Integer.parseInt(txtLevel.getText()), txtTeamInfo.getText(), txtPosition.getText(),emp.getProfilePhoto());
             employeeList.updateEmployee(employee);
             clearFields();
             JOptionPane.showMessageDialog(null, employee.getName() +"'s profile has been updated.");
@@ -704,7 +704,7 @@ public class ViewPanel extends javax.swing.JPanel {
         txtEmail.setText(emp.getContact().getEmailID());
         fixed_Gender.setText(emp.getGender());
         txtTeamInfo.setText(emp.getTeamInfo());
-        txtLevel.setText(emp.getLevel());
+        txtLevel.setText(emp.getLevel()+"");
         ImageIcon profilePicture = new ImageIcon(emp.getProfilePhoto());
         Image image = profilePicture.getImage().getScaledInstance(displayPic.getWidth(), displayPic.getHeight(), Image.SCALE_SMOOTH);
         displayPic.setIcon(new ImageIcon(image)); 
@@ -836,7 +836,11 @@ public class ViewPanel extends javax.swing.JPanel {
         if(txtPhone.getText().length()!=10 || !txtPhone.getText().matches("\\d+")){
             JOptionPane.showMessageDialog(this,"Please Enter a Valid Phone Number");
             valid=false;
-        }              
+        }
+        if(txtLevel.getText().length()>2 || !txtLevel.getText().matches("\\d+")){
+            JOptionPane.showMessageDialog(this,"Please Enter Level between 1-15");
+            valid=false;
+        }  
         if(txtEmail.getText().length()<2 || !txtEmail.getText().matches("^(.+)@(\\S+)$")){
             JOptionPane.showMessageDialog(this,"Please Enter a Valid Email");
             valid=false;

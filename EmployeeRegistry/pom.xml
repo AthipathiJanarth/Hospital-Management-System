@@ -9,6 +9,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
-        <exec.mainClass>com.mycompany.employeeregistry.EmployeeRegistry</exec.mainClass>
+        <exec.mainClass>ui.MainJFrame</exec.mainClass>
     </properties>
 </project>

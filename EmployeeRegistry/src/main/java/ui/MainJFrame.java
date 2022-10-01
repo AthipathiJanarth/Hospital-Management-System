@@ -27,13 +27,13 @@ public class MainJFrame extends javax.swing.JFrame {
         sampleContact = new contactInfo();
         sampleContact.setContactDetails("9876543210", "john@gmail.com");
         sample.setContact(sampleContact);
-        sample.setEmployeeDetails("Jhon", 11563, 54, "Male", "01/31/2010", "4", "Management", "Director", "/Users/athipathi/Downloads/IMG_2540.JPG");
+        sample.setEmployeeDetails("Jhon", 11563, 54, "Male", "01/31/2010", 4, "Management", "Director", "/Users/athipathi/Downloads/IMG_2540.JPG");
         empList.addEmployee(sample);
         sample = new employeeDetails();
         sampleContact = new contactInfo();
         sampleContact.setContactDetails("8976543210", "doe@gmail.com");
         sample.setContact(sampleContact);
-        sample.setEmployeeDetails("Doe", 11763, 37, "Female", "01/31/2015", "7", "Management", "Senior Manager", "/Users/athipathi/Downloads/IMG_2540.JPG");
+        sample.setEmployeeDetails("Doe", 11763, 37, "Female", "01/31/2015", 7, "Management", "Senior Manager", "/Users/athipathi/Downloads/IMG_2540.JPG");
         empList.addEmployee(sample);
         
         ViewPanel viewPanel= new ViewPanel(empList);

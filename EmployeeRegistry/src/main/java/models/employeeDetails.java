@@ -16,7 +16,7 @@ public class employeeDetails {
     private int age;
     private String gender;
     private String startDate;
-    private String level;
+    private int level;
     private String teamInfo;
     private String positionTitle;
     private String profilePhoto; 
@@ -62,11 +62,11 @@ public class employeeDetails {
         this.startDate = startDate;
     }
 
-    public String getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
@@ -103,7 +103,7 @@ public class employeeDetails {
     }
     
     
-    public void setEmployeeDetails(String name,int empID,int empAge,String empGender,String date,String empLevel,String empTeam,String empPosition,String photoPath){
+    public void setEmployeeDetails(String name,int empID,int empAge,String empGender,String date,int empLevel,String empTeam,String empPosition,String photoPath){
         Name=name;
         employeeID=empID;
         age=empAge;
@@ -114,7 +114,7 @@ public class employeeDetails {
         positionTitle=empPosition;
         profilePhoto = photoPath;
     }
-    public void updateEmployeeDetails(String name,String empLevel,String empTeam,String empPosition){
+    public void updateEmployeeDetails(String name,int empLevel,String empTeam,String empPosition){
         Name=name;      
         level=empLevel;
         teamInfo=empTeam;
