@@ -410,7 +410,7 @@ public class createPanel extends javax.swing.JPanel {
             valid=false;
         }  
         if(txtEmployeeID.getText().length()<1 || !txtEmployeeID.getText().matches("\\d+")){
-            JOptionPane.showMessageDialog(this,"Employee Should be in Numbers");
+            JOptionPane.showMessageDialog(this,"Employee ID Should be in Numbers");
             valid=false;
         } 
         if(txtPhone.getText().length()!=10 || !txtPhone.getText().matches("\\d+")){
@@ -433,7 +433,7 @@ public class createPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,"Please Enter a Valid Email");
             valid=false;
         }
-        if(txtDate.getText().length()<2 || txtDate.getText().matches("^(0?[1-9]|[12][0-9]|3[01])[\\/\\-](0?[1-9]|1[012])[\\/\\-]\\d{4}$")){
+        if(txtDate.getText().length()<2 || txtDate.getText().matches("^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$")){
             JOptionPane.showMessageDialog(this,"Please Enter a Valid Date");
             valid=false;
         }

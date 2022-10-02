@@ -55,7 +55,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="radioFemale" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="browseBtn" min="-2" max="-2" attributes="0"/>
+                          <Component id="browseBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
