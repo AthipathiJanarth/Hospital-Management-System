@@ -5,6 +5,7 @@
 package models;
 
 import java.util.ArrayList;
+import static ui.MainJFrame.defaultemployeeID;
 
 /**
  *
@@ -15,6 +16,7 @@ public class employeeDirectory {
     private ArrayList<employeeDetails> employeeList;
     
     public boolean addEmployee(employeeDetails employee) {
+        defaultemployeeID++;
         return employeeList.add(employee);
     }
     public void deleteEmployee(int empid) {
@@ -37,6 +39,7 @@ public class employeeDirectory {
     }
     public void updateEmployee(employeeDetails employee){
     for(employeeDetails emp : employeeList) {
+        System.out.println(employee.getEmployeeID());
     if(emp!=null && employee.getEmployeeID() == emp.getEmployeeID()) {
         emp.updateEmployeeDetails(employee.getName(), employee.getLevel(), employee.getTeamInfo(), employee.getPositionTitle());
         contactInfo contact =new contactInfo();

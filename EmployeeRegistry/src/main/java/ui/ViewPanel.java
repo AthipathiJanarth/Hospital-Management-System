@@ -663,8 +663,11 @@ public class ViewPanel extends javax.swing.JPanel {
         contactInfo contact = new contactInfo();
         contact.setContactDetails(mobile, mail);
         emp.setContact(contact);
-        emp.setEmployeeDetails(name , Integer.parseInt(age), gender, date, Integer.parseInt(level), info, position,photo);
+        emp.setEmployeeDetails(name , Integer.parseInt(age), gender, date, Integer.parseInt(level), info, position,photo);       
+        
         empId=Integer.parseInt(empID);
+        emp.setEmployeeID(empId);
+        System.out.println(empId);
         //to display profile
         jTabbedPane1.setSelectedIndex(1);
         label_displayName.setText(name);
@@ -698,6 +701,7 @@ public class ViewPanel extends javax.swing.JPanel {
             contact.setContactDetails(txtPhone.getText(), txtEmail.getText());
             employee.setContact(contact);
             employee.setEmployeeDetails(txtName.getText(), emp.getAge(), emp.getGender(), emp.getStartDate(), Integer.parseInt(txtLevel.getText()), txtTeamInfo.getText(), txtPosition.getText(),emp.getProfilePhoto());
+            employee.setEmployeeID(empId);
             employeeList.updateEmployee(employee);
             clearFields();
             JOptionPane.showMessageDialog(null, employee.getName() +"'s profile has been updated.");

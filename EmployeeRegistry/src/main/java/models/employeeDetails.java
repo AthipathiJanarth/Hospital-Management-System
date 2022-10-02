@@ -106,8 +106,7 @@ public class employeeDetails {
     
     public void setEmployeeDetails(String name,int empAge,String empGender,Date date,int empLevel,String empTeam,String empPosition,String photoPath){
         Name=name;
-        //employeeID++;
-        defaultemployeeID++;
+        //employeeID++;       
         employeeID=defaultemployeeID;
         age=empAge;
         gender=empGender;
