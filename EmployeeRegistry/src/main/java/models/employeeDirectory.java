@@ -17,7 +17,14 @@ public class employeeDirectory {
     public boolean addEmployee(employeeDetails employee) {
         return employeeList.add(employee);
     }
-    public void deleteEmployee(int index) {
+    public void deleteEmployee(int empid) {
+        int index=0;
+        for(int i = 0;i < employeeList.size() ;i++){
+            System.out.println(empid);
+            if(employeeList.get(i).getEmployeeID() == empid) {
+                index=i;
+            }
+        }
          employeeList.remove(index);
     }
     

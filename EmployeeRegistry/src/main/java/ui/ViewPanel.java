@@ -22,7 +22,7 @@ public class ViewPanel extends javax.swing.JPanel {
     employeeDirectory employeeList,filteredList;
     employeeDetails emp,employee;
     contactInfo contact;
-    int index;
+    int empId;
     public ViewPanel(employeeDirectory empList) {
         initComponents();
         employeeList = empList;
@@ -648,7 +648,7 @@ public class ViewPanel extends javax.swing.JPanel {
         contact.setContactDetails(mobile, mail);
         emp.setContact(contact);
         emp.setEmployeeDetails(name , Integer.parseInt(age), gender, date, Integer.parseInt(level), info, position,photo);
-        index=empTable.getSelectedRow();
+        empId=Integer.parseInt(empID);
         //to display profile
         jTabbedPane1.setSelectedIndex(1);
         label_displayName.setText(name);
@@ -668,7 +668,7 @@ public class ViewPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_empTableMouseClicked
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        employeeList.deleteEmployee(index) ;    
+        employeeList.deleteEmployee(empId) ;    
         JOptionPane.showMessageDialog(this,"Employee Profile has been deleted!!");
         displayEmployees(employeeList);
         jTabbedPane1.setSelectedIndex(0);             
