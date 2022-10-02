@@ -25,7 +25,6 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="labelEmpID" min="-2" pref="122" max="-2" attributes="0"/>
                           <Component id="labelName" min="-2" pref="122" max="-2" attributes="0"/>
                           <Component id="labelAge" alignment="1" min="-2" pref="122" max="-2" attributes="0"/>
                           <Component id="labelGender" alignment="1" min="-2" pref="122" max="-2" attributes="0"/>
@@ -38,24 +37,21 @@
                           <Component id="labelPhoto" alignment="1" min="-2" pref="122" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="81" pref="81" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="txtEmployeeID" min="-2" pref="187" max="-2" attributes="0"/>
-                              <Component id="txtAge" min="-2" pref="187" max="-2" attributes="0"/>
-                              <Component id="txtLevel" min="-2" pref="187" max="-2" attributes="0"/>
-                              <Component id="txtDate" min="-2" pref="187" max="-2" attributes="0"/>
-                              <Component id="txtTeamInfo" min="-2" pref="187" max="-2" attributes="0"/>
-                              <Component id="txtPosition" min="-2" pref="187" max="-2" attributes="0"/>
-                              <Component id="txtPhone" min="-2" pref="187" max="-2" attributes="0"/>
-                              <Component id="txtEmail" min="-2" pref="187" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="txtName" alignment="1" min="-2" pref="187" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtAge" alignment="0" pref="187" max="32767" attributes="0"/>
+                          <Component id="txtLevel" alignment="0" pref="187" max="32767" attributes="0"/>
+                          <Component id="txtTeamInfo" alignment="0" pref="187" max="32767" attributes="0"/>
+                          <Component id="txtPosition" alignment="0" pref="187" max="32767" attributes="0"/>
+                          <Component id="txtPhone" alignment="0" pref="187" max="32767" attributes="0"/>
+                          <Component id="txtEmail" alignment="0" pref="187" max="32767" attributes="0"/>
+                          <Component id="txtName" alignment="0" pref="187" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="radioMale" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="radioFemale" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="browseBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDate" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
@@ -66,7 +62,6 @@
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="errTxt" min="-2" pref="224" max="-2" attributes="0"/>
-                  <Component id="errTxt1" min="-2" pref="224" max="-2" attributes="0"/>
                   <Component id="errTxt2" min="-2" pref="224" max="-2" attributes="0"/>
                   <Component id="errTxt3" min="-2" pref="224" max="-2" attributes="0"/>
                   <Component id="errTxt4" min="-2" pref="224" max="-2" attributes="0"/>
@@ -86,17 +81,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="labelCreate" min="-2" pref="38" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelName" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="errTxt" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelEmpID" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="txtEmployeeID" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="errTxt1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -112,10 +101,12 @@
                   <Component id="errTxt3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelStartDate" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="txtDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="errTxt4" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelStartDate" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="errTxt4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="txtDate" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -157,7 +148,7 @@
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="addBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace pref="56" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -174,11 +165,6 @@
     <Component class="javax.swing.JLabel" name="labelName">
       <Properties>
         <Property name="text" type="java.lang.String" value="Name"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelEmpID">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Employee ID"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labelAge">
@@ -232,22 +218,12 @@
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtEmployeeID">
-      <Properties>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="txtAge">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLevel">
-      <Properties>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtDate">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
@@ -308,23 +284,6 @@
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="errTxt.setVisible(false);"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JLabel" name="errTxt1">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="33" red="ff" type="rgb"/>
-        </Property>
-        <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="errTxt"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="*This is a Mandatory Field"/>
-        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Default Cursor"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="errTxt1.setVisible(false);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="errTxt2">
@@ -487,6 +446,8 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="errTxt10.setVisible(false);"/>
       </AuxValues>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="txtDate">
     </Component>
   </SubComponents>
 </Form>

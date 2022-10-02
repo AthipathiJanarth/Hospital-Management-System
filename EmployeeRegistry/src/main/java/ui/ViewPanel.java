@@ -5,6 +5,7 @@
 package ui;
 
 import java.awt.Image;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -636,7 +637,7 @@ public class ViewPanel extends javax.swing.JPanel {
         String name=empTable.getValueAt( empTable.getSelectedRow(), 1).toString();
         String age= empTable.getValueAt(empTable.getSelectedRow(), 2).toString();
         String gender=empTable.getValueAt( empTable.getSelectedRow(), 3).toString();
-        String date=empTable.getValueAt( empTable.getSelectedRow(), 4).toString();
+        Date date=(Date) empTable.getValueAt( empTable.getSelectedRow(), 4);
         String level=empTable.getValueAt( empTable.getSelectedRow(), 5).toString();
         String info=empTable.getValueAt( empTable.getSelectedRow(), 6).toString();
         String position=empTable.getValueAt( empTable.getSelectedRow(), 7).toString();
@@ -646,14 +647,14 @@ public class ViewPanel extends javax.swing.JPanel {
         contactInfo contact = new contactInfo();
         contact.setContactDetails(mobile, mail);
         emp.setContact(contact);
-        emp.setEmployeeDetails(name, Integer.parseInt(empID), Integer.parseInt(age), gender, date, Integer.parseInt(level), info, position,photo);
+        emp.setEmployeeDetails(name , Integer.parseInt(age), gender, date, Integer.parseInt(level), info, position,photo);
         index=empTable.getSelectedRow();
         //to display profile
         jTabbedPane1.setSelectedIndex(1);
         label_displayName.setText(name);
         label_displayEmpID.setText(empID);
         label_displayAge.setText(age);
-        label_displayDate.setText(date);
+        label_displayDate.setText(date +"");
         label_displayPhone.setText(mobile);
         label_displayPosition.setText(position);
         label_displayEmail.setText(mail);
@@ -680,7 +681,7 @@ public class ViewPanel extends javax.swing.JPanel {
             employee= new employeeDetails();         
             contact.setContactDetails(txtPhone.getText(), txtEmail.getText());
             employee.setContact(contact);
-            employee.setEmployeeDetails(txtName.getText(), emp.getEmployeeID(), emp.getAge(), emp.getGender(), emp.getStartDate(), Integer.parseInt(txtLevel.getText()), txtTeamInfo.getText(), txtPosition.getText(),emp.getProfilePhoto());
+            employee.setEmployeeDetails(txtName.getText(), emp.getAge(), emp.getGender(), emp.getStartDate(), Integer.parseInt(txtLevel.getText()), txtTeamInfo.getText(), txtPosition.getText(),emp.getProfilePhoto());
             employeeList.updateEmployee(employee);
             clearFields();
             JOptionPane.showMessageDialog(null, employee.getName() +"'s profile has been updated.");
@@ -698,7 +699,7 @@ public class ViewPanel extends javax.swing.JPanel {
         txtName.setText(emp.getName());
         fixed_EmpID.setText(emp.getEmployeeID()+"");
         fixed_Age.setText(emp.getAge()+"");
-        fixed_Date.setText(emp.getStartDate());
+        fixed_Date.setText(emp.getStartDate()+"");
         txtPhone.setText(emp.getContact().getPhoneNumber());
         txtPosition.setText(emp.getPositionTitle());
         txtEmail.setText(emp.getContact().getEmailID());

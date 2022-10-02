@@ -5,6 +5,7 @@
 package models;
 import java.awt.Image;
 import java.util.Date;
+import static ui.MainJFrame.defaultemployeeID;
 
 /**
  *
@@ -15,7 +16,7 @@ public class employeeDetails {
     private int employeeID;
     private int age;
     private String gender;
-    private String startDate;
+    private Date startDate;
     private int level;
     private String teamInfo;
     private String positionTitle;
@@ -54,11 +55,11 @@ public class employeeDetails {
         this.gender = gender;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
@@ -103,9 +104,11 @@ public class employeeDetails {
     }
     
     
-    public void setEmployeeDetails(String name,int empID,int empAge,String empGender,String date,int empLevel,String empTeam,String empPosition,String photoPath){
+    public void setEmployeeDetails(String name,int empAge,String empGender,Date date,int empLevel,String empTeam,String empPosition,String photoPath){
         Name=name;
-        employeeID=empID;
+        //employeeID++;
+        defaultemployeeID++;
+        employeeID=defaultemployeeID;
         age=empAge;
         gender=empGender;
         startDate=date;

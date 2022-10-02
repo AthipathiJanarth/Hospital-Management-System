@@ -4,6 +4,7 @@
  */
 package ui;
 
+import java.util.Date;
 import models.contactInfo;
 import models.employeeDetails;
 import models.employeeDirectory;
@@ -17,6 +18,7 @@ public class MainJFrame extends javax.swing.JFrame {
     employeeDirectory empList;
     employeeDetails sample;
     contactInfo sampleContact;
+    public static int defaultemployeeID=11763;
     public MainJFrame() {
         initComponents();
         setTitle("Employee Registry");
@@ -27,13 +29,13 @@ public class MainJFrame extends javax.swing.JFrame {
         sampleContact = new contactInfo();
         sampleContact.setContactDetails("9876543210", "john@gmail.com");
         sample.setContact(sampleContact);
-        sample.setEmployeeDetails("Jhon", 11563, 54, "Male", "01/31/2010", 4, "Management", "Director", "/Users/athipathi/Downloads/IMG_2540.JPG");
+        sample.setEmployeeDetails("Jhon", 54, "Male", new Date("01/31/2010"), 4, "Management", "Director", "/Users/athipathi/Downloads/IMG_2540.JPG");
         empList.addEmployee(sample);
         sample = new employeeDetails();
         sampleContact = new contactInfo();
         sampleContact.setContactDetails("8976543210", "doe@gmail.com");
         sample.setContact(sampleContact);
-        sample.setEmployeeDetails("Doe", 11763, 37, "Female", "01/31/2015", 7, "Management", "Senior Manager", "/Users/athipathi/Downloads/IMG_2540.JPG");
+        sample.setEmployeeDetails("Doe", 37, "Female", new Date("01/31/2015"), 7, "Management", "Senior Manager", "/Users/athipathi/Downloads/IMG_2540.JPG");
         empList.addEmployee(sample);
         
         ViewPanel viewPanel= new ViewPanel(empList);
