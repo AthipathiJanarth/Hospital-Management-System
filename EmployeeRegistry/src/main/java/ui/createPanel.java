@@ -362,10 +362,10 @@ public class createPanel extends javax.swing.JPanel {
             errTxt6.setVisible(true);
             valid=false;
         }
-        if(txtDate.getDate().toString().isEmpty()){
-            errTxt4.setVisible(true);
-            valid=false;
-        }
+//        if(txtDate.getDate().toString().isEmpty()){
+//            errTxt4.setVisible(true);
+//            valid=false;
+//        }
         if(txtPosition.getText().isEmpty()){
             errTxt7.setVisible(true);
             valid=false;
