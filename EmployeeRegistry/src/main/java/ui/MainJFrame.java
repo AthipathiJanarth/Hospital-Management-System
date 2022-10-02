@@ -59,8 +59,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        controlPanel.setBackground(new java.awt.Color(255, 255, 255));
         controlPanel.setPreferredSize(new java.awt.Dimension(200, 665));
 
+        createBtn.setBackground(new java.awt.Color(255, 153, 0));
+        createBtn.setForeground(new java.awt.Color(255, 255, 255));
         createBtn.setText("Create");
         createBtn.setToolTipText("Create New Employee");
         createBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +72,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        viewBtn.setBackground(new java.awt.Color(255, 153, 0));
+        viewBtn.setForeground(new java.awt.Color(255, 255, 255));
         viewBtn.setText("Manage Employee");
         viewBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

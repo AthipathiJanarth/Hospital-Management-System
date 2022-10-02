@@ -131,6 +131,8 @@ public class ViewPanel extends javax.swing.JPanel {
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
 
+        listPanel.setBackground(new java.awt.Color(255, 255, 255));
+
         empTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -169,6 +171,8 @@ public class ViewPanel extends javax.swing.JPanel {
             empTable.getColumnModel().getColumn(10).setPreferredWidth(0);
         }
 
+        btnSearch.setBackground(new java.awt.Color(255, 153, 0));
+        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,7 +234,7 @@ public class ViewPanel extends javax.swing.JPanel {
                     .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txt_NameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 758, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         listPanelLayout.setVerticalGroup(
             listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,6 +259,8 @@ public class ViewPanel extends javax.swing.JPanel {
         );
 
         jTabbedPane1.addTab("tab1", listPanel);
+
+        empPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         labelCreate.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         labelCreate.setText("Employee Details");
@@ -302,6 +308,8 @@ public class ViewPanel extends javax.swing.JPanel {
 
         profilePhoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        btnUpdate.setBackground(new java.awt.Color(255, 153, 0));
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -309,6 +317,8 @@ public class ViewPanel extends javax.swing.JPanel {
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(255, 51, 51));
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -413,6 +423,8 @@ public class ViewPanel extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("tab3", empPanel);
 
+        updatePanel.setBackground(new java.awt.Color(255, 255, 255));
+
         labelCreate1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         labelCreate1.setText("Update Employee Profile");
 
@@ -449,6 +461,8 @@ public class ViewPanel extends javax.swing.JPanel {
 
         txtEmail.setToolTipText("");
 
+        btnConfirm.setBackground(new java.awt.Color(255, 153, 0));
+        btnConfirm.setForeground(new java.awt.Color(255, 255, 255));
         btnConfirm.setText("Confirm");
         btnConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -480,6 +494,8 @@ public class ViewPanel extends javax.swing.JPanel {
         errTxt9.setText("*This is a Mandatory Field");
         errTxt9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        btnCancel.setBackground(new java.awt.Color(255, 153, 0));
+        btnCancel.setForeground(new java.awt.Color(255, 255, 255));
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

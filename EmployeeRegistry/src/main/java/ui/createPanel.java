@@ -67,6 +67,8 @@ public class createPanel extends javax.swing.JPanel {
         errTxt10 = new javax.swing.JLabel();
         txtDate = new com.toedter.calendar.JDateChooser();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         labelCreate.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         labelCreate.setText("Create New Employee");
 
@@ -105,6 +107,8 @@ public class createPanel extends javax.swing.JPanel {
 
         txtEmail.setToolTipText("");
 
+        addBtn.setBackground(new java.awt.Color(255, 153, 0));
+        addBtn.setForeground(new java.awt.Color(255, 255, 255));
         addBtn.setText("Add Employee");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,6 +170,8 @@ public class createPanel extends javax.swing.JPanel {
         errTxt9.setText("*This is a Mandatory Field");
         errTxt9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        browseBtn.setBackground(new java.awt.Color(255, 153, 0));
+        browseBtn.setForeground(new java.awt.Color(255, 255, 255));
         browseBtn.setText("Browse Image");
         browseBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,7 +287,7 @@ public class createPanel extends javax.swing.JPanel {
                     .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(errTxt9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -289,7 +295,7 @@ public class createPanel extends javax.swing.JPanel {
                         .addComponent(errTxt10)))
                 .addGap(29, 29, 29)
                 .addComponent(addBtn)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         errTxt.setVisible(false);
