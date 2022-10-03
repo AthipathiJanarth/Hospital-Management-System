@@ -29,7 +29,7 @@ public class MainJFrame extends javax.swing.JFrame {
         sampleContact = new contactInfo();
         sampleContact.setContactDetails("9876543210", "john@gmail.com");
         sample.setContact(sampleContact);
-        sample.setEmployeeDetails("Jhon", 54, "Male", new Date("01/31/2010"), 4, "Management", "Director", "/Users/athipathi/Downloads/IMG_2540.JPG");
+        sample.setEmployeeDetails("John", 54, "Male", new Date("01/31/2010"), 4, "Management", "Director", "/Users/athipathi/Downloads/IMG_2540.JPG");
         empList.addEmployee(sample);
         sample = new employeeDetails();
         sampleContact = new contactInfo();

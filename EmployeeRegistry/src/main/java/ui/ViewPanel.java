@@ -770,7 +770,7 @@ public class ViewPanel extends javax.swing.JPanel {
         if(!txt_emailSearch.getText().isBlank()){
              filteredList = new employeeDirectory();
              for(employeeDetails emp : employeeList.getEmployeeList()){
-                 if((emp.getName().toLowerCase()).contains(txt_emailSearch.getText().toLowerCase())){
+                 if((emp.getContact().getEmailID().toLowerCase()).contains(txt_emailSearch.getText().toLowerCase())){
                   filteredList.addEmployee(emp);
                  }
              }
