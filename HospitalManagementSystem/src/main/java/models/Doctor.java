@@ -8,10 +8,11 @@ package models;
  *
  * @author athipathi
  */
-public class Patient extends Person {
+public class Doctor extends Person {
+    private int DoctorID;
 
-    public int getPatientID() {
-        return patientID;
+    public int getDoctorID() {
+        return DoctorID;
     }
 
     public String getName() {
@@ -41,8 +42,7 @@ public class Patient extends Person {
     public String getRole() {
         return role;
     }
-    private int patientID;
-    public void createPatient(String name, int age, String gender, int personID, String password, long phoneNo,String role,int patientID) {
+    public void createDoctor(String name, int age, String gender, int personID, String password, long phoneNo,String role,int doctorID) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -50,6 +50,6 @@ public class Patient extends Person {
         this.password = password;
         this.phoneNo = phoneNo;
         this.role= role;
-        this.patientID=patientID;
+        this.DoctorID=doctorID;
     }
 }
