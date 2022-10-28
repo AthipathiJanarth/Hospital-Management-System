@@ -8,8 +8,9 @@ package models;
  *
  * @author athipathi
  */
-public class House extends Community {
+public class House {
     private String streetName;
     private int doorNo;
+    private Community community;
     
 }

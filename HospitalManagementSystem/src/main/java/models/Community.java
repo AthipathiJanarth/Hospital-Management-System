@@ -8,7 +8,8 @@ package models;
  *
  * @author athipathi
  */
-public class Community extends City {
+public class Community {
     protected String communityName;
     protected int zipCode;
+    private City city;
 }

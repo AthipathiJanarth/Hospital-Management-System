@@ -16,11 +16,12 @@ public class VitalSigns {
     private int respirationRate;
     private String bloodPressure;
     
-    public VitalSigns(float temperature, int pulse, int respirationRate, String bloodPressure) {
+    public boolean createVitalSigns(float temperature, int pulse, int respirationRate, String bloodPressure) {
         this.temperature = temperature;
         this.pulse = pulse;
         this.respirationRate = respirationRate;
         this.bloodPressure = bloodPressure;
+        return true;
     }
     public void updateVitalSigns(float temperature, int pulse, int respirationRate, String bloodPressure) {
         this.temperature = temperature;

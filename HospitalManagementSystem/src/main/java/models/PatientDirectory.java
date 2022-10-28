@@ -28,4 +28,22 @@ public class PatientDirectory {
         defaultpatientID++;
         return patientList.add(patient);
     }
+    public Patient getPatient(int id){
+        Patient patient= new Patient();
+        for(Patient pt: this.patientList) { 
+            if(pt.getPersonID()==id) { 
+                patient=pt;
+            }
+            }
+        return patient;
+    }
+    public void updatePatient(Patient old,Patient newPatient){
+    int index=patientList.indexOf(old);
+    System.out.println(index);
+    patientList.set(index,newPatient);
+    }
+
+    public void removePatient(Patient pt) {
+        patientList.remove(pt);
+    }
 }

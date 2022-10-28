@@ -16,7 +16,7 @@ public class DoctorDirectory {
     public DoctorDirectory() {
         this.doctorList = new ArrayList<Doctor>();
     }
-     private ArrayList<Doctor> doctorList;
+    private ArrayList<Doctor> doctorList;
 
     public ArrayList<Doctor> getDoctorList() {
         return doctorList;
@@ -25,9 +25,28 @@ public class DoctorDirectory {
     public void setDoctorList(ArrayList<Doctor> doctorList) {
         this.doctorList = doctorList;
     }
-    public boolean addDoctor(Doctor doctor){
+
+    public boolean addDoctor(Doctor doctor) {
         defaultdoctorID++;
         return doctorList.add(doctor);
     }
 
+    public Doctor getDoctor(int id) {
+        Doctor doctor = new Doctor();
+        for (Doctor doc : this.doctorList) {
+            if (doc.getPersonID() == id) {
+                doctor = doc;
+            }
+        }
+        return doctor;
+    }
+
+    public void updatePatient(Doctor old, Doctor newDoctor) {
+        int index = doctorList.indexOf(old);
+        System.out.println(index);
+        doctorList.set(index, newDoctor);
+    }
+    public void removeDoctor(Doctor d) {
+        doctorList.remove(d);
+    }
 }

@@ -47,6 +47,12 @@ public class Person {
         this.phoneNo = phoneNo;
         this.role= role;
     }
+    public void updatePerson(String name, int age, String password, long phoneNo) {
+        this.name = name;
+        this.age = age;
+        this.password = password;
+        this.phoneNo = phoneNo;
+    }
     
     protected String name;
     protected int age;

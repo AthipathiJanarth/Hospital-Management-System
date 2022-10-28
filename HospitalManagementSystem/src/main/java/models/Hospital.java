@@ -8,8 +8,8 @@ package models;
  *
  * @author athipathi
  */
-public class Hospital extends Community {
+public class Hospital {
     private String hospitalName;
     private int hospitalID;
-    
+    private Community community;
 }

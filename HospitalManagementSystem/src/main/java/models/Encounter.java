@@ -10,17 +10,45 @@ import java.util.Date;
  */
 public class Encounter {
 
-    public Encounter(int encounterID, Date visitDate, Patient patient, Doctor doctor, VitalSigns vitalSigns) {
+    public int getEncounterID() {
+        return encounterID;
+    }
+
+    public Date getVisitDate() {
+        return visitDate;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public VitalSigns getVitalSigns() {
+        return vitalSigns;
+    }
+
+    public boolean createEncounter(int encounterID, Date visitDate, Patient patient, Doctor doctor, VitalSigns vitalSigns) {
         this.encounterID = encounterID;
         this.visitDate = visitDate;
         this.patient = patient;
         this.doctor = doctor;
         this.vitalSigns = vitalSigns;
+        return true;
+    }
+    public boolean updateEncounter(int encounterID,Date visitDate, Patient patient, Doctor doctor, VitalSigns vitalSigns) {
+        this.encounterID = encounterID;
+        this.visitDate = visitDate;
+        this.patient = patient;
+        this.doctor = doctor;
+        this.vitalSigns = vitalSigns;
+        return true;
     }
     private int encounterID;
     private Date visitDate;
     private Patient patient;
     private Doctor doctor;
-    private VitalSigns vitalSigns;
-    
+    private VitalSigns vitalSigns;    
 }

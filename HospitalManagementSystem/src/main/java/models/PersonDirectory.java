@@ -30,4 +30,21 @@ public class PersonDirectory {
         defaultpersonID++;
         return personList.add(person);
     }
+    public Person getPerson(int id){
+        Person person= new Person();
+        for(Person pt: this.personList) { 
+            if(pt.getPersonID()==id) { 
+                person=pt;
+            }
+            }
+        return person;
+    }
+    public void updatePerson(Person old,Person newPerson){
+    int index=personList.indexOf(old);
+    System.out.println(index);
+    personList.set(index,newPerson);
+    }
+    public void removePerson(Person p) {
+        personList.remove(p);
+    }
 }

@@ -52,4 +52,10 @@ public class Patient extends Person {
         this.role= role;
         this.patientID=patientID;
     }
+    public void updatePatient(String name, int age, String password, long phoneNo) {
+        this.name = name;
+        this.age = age;
+        this.password = password;
+        this.phoneNo = phoneNo;
+    }
 }
