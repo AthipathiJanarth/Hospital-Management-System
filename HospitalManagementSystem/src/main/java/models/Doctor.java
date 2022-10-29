@@ -10,6 +10,7 @@ package models;
  */
 public class Doctor extends Person {
     private int DoctorID;
+    private Hospital hospital;
 
     public int getDoctorID() {
         return DoctorID;
@@ -42,7 +43,11 @@ public class Doctor extends Person {
     public String getRole() {
         return role;
     }
-    public void createDoctor(String name, int age, String gender, int personID, String password, long phoneNo,String role,int doctorID) {
+
+    public Hospital getHospital() {
+        return hospital;
+    }
+    public void createDoctor(String name, int age, String gender, int personID, String password, long phoneNo,String role,int doctorID, Hospital hospital) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -51,5 +56,6 @@ public class Doctor extends Person {
         this.phoneNo = phoneNo;
         this.role= role;
         this.DoctorID=doctorID;
+        this.hospital=hospital;
     }
 }

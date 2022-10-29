@@ -8,6 +8,7 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.Component;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -32,7 +33,7 @@ public class MainJFrame extends javax.swing.JFrame {
     PatientDirectory patientDirectory;
     DoctorDirectory doctorList;
     EncounterHistory encounterList;
-    EncounterHistory patientspecificList;
+    EncounterHistory patientspecificList,doctorspecificList;
     Person selectedAcc;
     Doctor doctorAcc;
     Patient selectedPatient;
@@ -43,13 +44,16 @@ public class MainJFrame extends javax.swing.JFrame {
     Community community;
     CommunityList communityList;
     House house;
+    Hospital hospital;
     HouseDirectory houseList;
     HospitalDirectory hospitalList;
+    boolean isAdmin= false;
     public MainJFrame() {
         initComponents();
         setTitle("Hospital Management System");
         setResizable(false);
         sysAdmin = new SystemAdmin(defaultpersonID, "Admin");
+        hospitalDropDown = new JComboBox<String>();
         defaultpersonID++;
         selectedAcc = new Person();
         peopleList = new PersonDirectory();
@@ -261,6 +265,8 @@ public class MainJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        loginPanel.setBackground(new java.awt.Color(255, 255, 255));
+
         userID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userIDActionPerformed(evt);
@@ -271,6 +277,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Person ID");
 
+        LogIn.setBackground(new java.awt.Color(102, 204, 255));
+        LogIn.setForeground(new java.awt.Color(255, 255, 255));
         LogIn.setText("LOG IN");
         LogIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,8 +319,8 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(pwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(131, 131, 131)
-                .addComponent(LogIn)
-                .addGap(155, 155, 155))
+                .addComponent(LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(145, 145, 145))
         );
 
         MainPanel.addTab("tab1", loginPanel);
@@ -321,8 +329,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1.setPreferredSize(new java.awt.Dimension(688, 569));
 
+        adminMenu.setBackground(new java.awt.Color(255, 255, 255));
         adminMenu.setPreferredSize(new java.awt.Dimension(150, 569));
 
+        personBtn.setBackground(new java.awt.Color(255, 204, 0));
+        personBtn.setForeground(new java.awt.Color(255, 255, 255));
         personBtn.setText("Manage Person");
         personBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,6 +341,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        doctorBtn.setBackground(new java.awt.Color(255, 204, 0));
+        doctorBtn.setForeground(new java.awt.Color(255, 255, 255));
         doctorBtn.setText("Manage Doctor");
         doctorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -337,6 +350,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        hospitalBtn.setBackground(new java.awt.Color(255, 204, 0));
+        hospitalBtn.setForeground(new java.awt.Color(255, 255, 255));
         hospitalBtn.setText("Hospitals");
         hospitalBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -344,6 +359,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        logoutBtn.setBackground(new java.awt.Color(102, 204, 255));
+        logoutBtn.setForeground(new java.awt.Color(255, 255, 255));
         logoutBtn.setText("LOGOUT");
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -351,6 +368,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        patientBtn.setBackground(new java.awt.Color(255, 204, 0));
+        patientBtn.setForeground(new java.awt.Color(255, 255, 255));
         patientBtn.setText("Manage Patient");
         patientBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -358,6 +377,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        communityBtn.setBackground(new java.awt.Color(255, 204, 0));
+        communityBtn.setForeground(new java.awt.Color(255, 255, 255));
         communityBtn.setText("Community");
         communityBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -405,9 +426,12 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(adminMenu);
 
+        workArea.setBackground(new java.awt.Color(255, 255, 255));
         workArea.setPreferredSize(new java.awt.Dimension(538, 569));
         workArea.setRequestFocusEnabled(false);
         workArea.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        personList.setBackground(new java.awt.Color(255, 255, 255));
 
         personDirectory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -439,6 +463,8 @@ public class MainJFrame extends javax.swing.JFrame {
             personDirectory.getColumnModel().getColumn(6).setMaxWidth(0);
         }
 
+        createPersonBtn.setBackground(new java.awt.Color(255, 204, 0));
+        createPersonBtn.setForeground(new java.awt.Color(255, 255, 255));
         createPersonBtn.setText("Add New");
         createPersonBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -465,11 +491,13 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75)
-                .addComponent(createPersonBtn)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addComponent(createPersonBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         adminTabs.addTab("tab1", personList);
+
+        createPerson.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel13.setText("Name");
 
@@ -494,6 +522,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        createPersonBTN.setBackground(new java.awt.Color(255, 204, 0));
+        createPersonBTN.setForeground(new java.awt.Color(255, 255, 255));
         createPersonBTN.setText("Create Record");
         createPersonBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -577,11 +607,13 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel44)))
                 .addGap(55, 55, 55)
-                .addComponent(createPersonBTN)
-                .addGap(83, 83, 83))
+                .addComponent(createPersonBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
         );
 
         adminTabs.addTab("tab2", createPerson);
+
+        patientListPage.setBackground(new java.awt.Color(255, 255, 255));
 
         patientList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -613,6 +645,7 @@ public class MainJFrame extends javax.swing.JFrame {
             patientList.getColumnModel().getColumn(6).setMaxWidth(0);
         }
 
+        jLabel20.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel20.setText("Patient's Records");
 
         javax.swing.GroupLayout patientListPageLayout = new javax.swing.GroupLayout(patientListPage);
@@ -625,8 +658,8 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(patientListPageLayout.createSequentialGroup()
-                        .addGap(301, 301, 301)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(278, 278, 278)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         patientListPageLayout.setVerticalGroup(
@@ -640,6 +673,8 @@ public class MainJFrame extends javax.swing.JFrame {
         );
 
         adminTabs.addTab("tab3", patientListPage);
+
+        doctorListPage.setBackground(new java.awt.Color(255, 255, 255));
 
         DoctorList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -666,6 +701,7 @@ public class MainJFrame extends javax.swing.JFrame {
             DoctorList.getColumnModel().getColumn(5).setMaxWidth(0);
         }
 
+        jLabel19.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel19.setText("Doctor's Records");
 
         javax.swing.GroupLayout doctorListPageLayout = new javax.swing.GroupLayout(doctorListPage);
@@ -679,7 +715,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(doctorListPageLayout.createSequentialGroup()
                         .addGap(303, 303, 303)
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         doctorListPageLayout.setVerticalGroup(
@@ -693,6 +729,8 @@ public class MainJFrame extends javax.swing.JFrame {
         );
 
         adminTabs.addTab("tab4", doctorListPage);
+
+        personEditPage.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel29.setText("Name");
 
@@ -713,6 +751,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        savePersonBtn.setBackground(new java.awt.Color(255, 204, 0));
+        savePersonBtn.setForeground(new java.awt.Color(255, 255, 255));
         savePersonBtn.setText("Save");
         savePersonBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -725,6 +765,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        deleteBtn.setBackground(new java.awt.Color(255, 51, 51));
+        deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
         deleteBtn.setText("Delete");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -772,10 +814,10 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(personEditPageLayout.createSequentialGroup()
                 .addGap(252, 252, 252)
                 .addComponent(genderLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addGroup(personEditPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(savePersonBtn)
-                    .addComponent(deleteBtn))
+                    .addComponent(savePersonBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(93, 93, 93))
             .addGroup(personEditPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(personEditPageLayout.createSequentialGroup()
@@ -806,6 +848,8 @@ public class MainJFrame extends javax.swing.JFrame {
         );
 
         adminTabs.addTab("tab5", personEditPage);
+
+        hospitalPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         communities1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -871,6 +915,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel46.setText("Hospital Name");
 
+        addnewHospitalBtn.setBackground(new java.awt.Color(255, 204, 0));
+        addnewHospitalBtn.setForeground(new java.awt.Color(255, 255, 255));
         addnewHospitalBtn.setText("Add Hospital");
         addnewHospitalBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -878,6 +924,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        updateHouseBtn1.setBackground(new java.awt.Color(255, 204, 0));
+        updateHouseBtn1.setForeground(new java.awt.Color(255, 255, 255));
         updateHouseBtn1.setText("Update");
         updateHouseBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -941,10 +989,10 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addGroup(hospitalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel48)
                             .addComponent(cityLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addnewHospitalBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(updateHouseBtn1)))
+                        .addGap(18, 18, 18)
+                        .addComponent(addnewHospitalBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(updateHouseBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
@@ -971,8 +1019,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         MainPanel.addTab("tab2", systemAdminPage);
 
+        doctorPage.setBackground(new java.awt.Color(255, 255, 255));
         doctorPage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        logOutBtn.setBackground(new java.awt.Color(102, 204, 255));
+        logOutBtn.setForeground(new java.awt.Color(255, 255, 255));
         logOutBtn.setText("LOGOUT");
         logOutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -982,6 +1033,8 @@ public class MainJFrame extends javax.swing.JFrame {
         doctorPage.add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(773, 28, 116, -1));
 
         doctorTabs.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+
+        doctorHome.setBackground(new java.awt.Color(255, 255, 255));
 
         patientsList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1031,6 +1084,10 @@ public class MainJFrame extends javax.swing.JFrame {
         );
 
         doctorTabs.addTab("tab1", doctorHome);
+
+        patientEncounter.setBackground(new java.awt.Color(255, 255, 255));
+
+        patientDetails.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel3.setText("Name");
 
@@ -1165,6 +1222,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        submitEncounterBTN.setBackground(new java.awt.Color(255, 204, 0));
+        submitEncounterBTN.setForeground(new java.awt.Color(255, 255, 255));
         submitEncounterBTN.setText("Submit");
         submitEncounterBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1246,6 +1305,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         doctorPage.add(doctorTabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 69, -1, 530));
 
+        bckBTN.setBackground(new java.awt.Color(0, 153, 51));
+        bckBTN.setForeground(new java.awt.Color(255, 255, 255));
         bckBTN.setText("HOME");
         bckBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1257,9 +1318,12 @@ public class MainJFrame extends javax.swing.JFrame {
 
         MainPanel.addTab("tab3", doctorPage);
 
+        patientPage.setBackground(new java.awt.Color(255, 255, 255));
         patientPage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         patientTabbed.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+
+        patientLandingPage.setBackground(new java.awt.Color(255, 255, 255));
 
         nearbyDoctorList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1318,6 +1382,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel21.setText("Medical History");
 
+        editProfileBtn.setBackground(new java.awt.Color(0, 204, 51));
+        editProfileBtn.setForeground(new java.awt.Color(255, 255, 255));
         editProfileBtn.setText("Edit Profile");
         editProfileBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1338,19 +1404,19 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(patientLandingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
             .addGroup(patientLandingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(patientLandingPageLayout.createSequentialGroup()
                     .addGap(54, 54, 54)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(75, Short.MAX_VALUE)))
+                    .addContainerGap(96, Short.MAX_VALUE)))
         );
         patientLandingPageLayout.setVerticalGroup(
             patientLandingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(patientLandingPageLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(editProfileBtn)
-                .addGap(247, 247, 247)
+                .addComponent(editProfileBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(238, 238, 238)
                 .addComponent(jLabel21)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1364,6 +1430,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         patientTabbed.addTab("tab1", patientLandingPage);
 
+        patientProfilePage.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel22.setText("Name");
 
         jLabel23.setText("Age");
@@ -1374,8 +1442,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel25.setText("Patient ID");
 
+        jLabel26.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel26.setText("Edit My Profile");
 
+        HomeBTN.setBackground(new java.awt.Color(0, 204, 102));
+        HomeBTN.setForeground(new java.awt.Color(255, 255, 255));
         HomeBTN.setText("Home");
         HomeBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1383,6 +1454,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        updateBTN.setBackground(new java.awt.Color(102, 204, 255));
+        updateBTN.setForeground(new java.awt.Color(255, 255, 255));
         updateBTN.setText("Save");
         updateBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1396,28 +1469,31 @@ public class MainJFrame extends javax.swing.JFrame {
         patientProfilePage.setLayout(patientProfilePageLayout);
         patientProfilePageLayout.setHorizontalGroup(
             patientProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(patientProfilePageLayout.createSequentialGroup()
-                .addGap(398, 398, 398)
-                .addGroup(patientProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                    .addComponent(updateBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 324, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientProfilePageLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel26)
+                .addGap(318, 318, 318)
                 .addComponent(HomeBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGap(57, 57, 57))
             .addGroup(patientProfilePageLayout.createSequentialGroup()
-                .addGap(256, 256, 256)
-                .addGroup(patientProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(133, 133, 133)
-                .addGroup(patientProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(patientProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(personGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(personPhoneTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                        .addComponent(patientIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(personPwdTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(patientProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(patientProfilePageLayout.createSequentialGroup()
+                        .addGap(398, 398, 398)
+                        .addComponent(updateBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(patientProfilePageLayout.createSequentialGroup()
+                        .addGap(256, 256, 256)
+                        .addGroup(patientProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(133, 133, 133)
+                        .addGroup(patientProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(patientProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(personGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(personPhoneTxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                                .addComponent(patientIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(personPwdTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(275, Short.MAX_VALUE))
             .addGroup(patientProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(patientProfilePageLayout.createSequentialGroup()
                     .addGap(257, 257, 257)
@@ -1429,7 +1505,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addGroup(patientProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(personNameTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(personAgeTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(258, Short.MAX_VALUE)))
+                    .addContainerGap(279, Short.MAX_VALUE)))
         );
         patientProfilePageLayout.setVerticalGroup(
             patientProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1442,7 +1518,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(patientProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(patientIDLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(personGender)
                 .addGap(18, 18, 18)
                 .addGroup(patientProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1453,8 +1529,8 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel28)
                     .addComponent(personPwdTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
-                .addComponent(updateBTN)
-                .addGap(121, 121, 121))
+                .addComponent(updateBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113))
             .addGroup(patientProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(patientProfilePageLayout.createSequentialGroup()
                     .addGap(147, 147, 147)
@@ -1474,22 +1550,27 @@ public class MainJFrame extends javax.swing.JFrame {
 
         patientPage.add(patientTabbed, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 56, -1, 570));
 
+        logoutBTN.setBackground(new java.awt.Color(102, 204, 255));
+        logoutBTN.setForeground(new java.awt.Color(255, 255, 255));
         logoutBTN.setText("LOGOUT");
         logoutBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutBTNActionPerformed(evt);
             }
         });
-        patientPage.add(logoutBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, -1, -1));
+        patientPage.add(logoutBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, -1, 30));
 
         welcomeLBL.setText("Welcome");
         patientPage.add(welcomeLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 267, -1));
 
         MainPanel.addTab("tab4", patientPage);
 
+        communityAdminMenu.setBackground(new java.awt.Color(255, 255, 255));
         communityAdminMenu.setPreferredSize(new java.awt.Dimension(150, 557));
         communityAdminMenu.setSize(new java.awt.Dimension(150, 569));
 
+        addCityBtn.setBackground(new java.awt.Color(255, 204, 0));
+        addCityBtn.setForeground(new java.awt.Color(255, 255, 255));
         addCityBtn.setText("City");
         addCityBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1497,6 +1578,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        addCommunityBtn.setBackground(new java.awt.Color(255, 204, 0));
+        addCommunityBtn.setForeground(new java.awt.Color(255, 255, 255));
         addCommunityBtn.setText("Community");
         addCommunityBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1504,6 +1587,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        addHouseBtn.setBackground(new java.awt.Color(255, 204, 0));
+        addHouseBtn.setForeground(new java.awt.Color(255, 255, 255));
         addHouseBtn.setText("House");
         addHouseBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1511,6 +1596,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        logoutButton.setBackground(new java.awt.Color(102, 204, 255));
+        logoutButton.setForeground(new java.awt.Color(255, 255, 255));
         logoutButton.setText("LOGOUT");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1518,6 +1605,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        homeBtn1.setBackground(new java.awt.Color(0, 204, 51));
+        homeBtn1.setForeground(new java.awt.Color(255, 255, 255));
         homeBtn1.setText("HOME");
         homeBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1563,12 +1652,16 @@ public class MainJFrame extends javax.swing.JFrame {
 
         communityAdminWorkArea.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        cityPanel.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel35.setText("City Name");
 
         State.setText("State");
 
         jLabel37.setText("Manage Cities");
 
+        addnewCityBTN.setBackground(new java.awt.Color(255, 204, 0));
+        addnewCityBTN.setForeground(new java.awt.Color(255, 255, 255));
         addnewCityBTN.setText("Add City");
         addnewCityBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1606,6 +1699,8 @@ public class MainJFrame extends javax.swing.JFrame {
             cities.getColumnModel().getColumn(2).setMaxWidth(0);
         }
 
+        updateCityBtn.setBackground(new java.awt.Color(255, 204, 0));
+        updateCityBtn.setForeground(new java.awt.Color(255, 255, 255));
         updateCityBtn.setText("Update");
         updateCityBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1664,6 +1759,8 @@ public class MainJFrame extends javax.swing.JFrame {
         );
 
         communityAdminTabs.addTab("tab1", cityPanel);
+
+        communityPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         cities1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1731,6 +1828,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel39.setText("Zip Code");
 
+        addnewCommunityBtn.setBackground(new java.awt.Color(255, 204, 0));
+        addnewCommunityBtn.setForeground(new java.awt.Color(255, 255, 255));
         addnewCommunityBtn.setText("Add Community");
         addnewCommunityBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1738,6 +1837,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        updateCommunityBtn.setBackground(new java.awt.Color(255, 204, 0));
+        updateCommunityBtn.setForeground(new java.awt.Color(255, 255, 255));
         updateCommunityBtn.setText("Update");
         updateCommunityBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1813,6 +1914,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         communityAdminTabs.addTab("tab2", communityPanel);
 
+        housePanel.setBackground(new java.awt.Color(255, 255, 255));
+
         communities.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -1880,6 +1983,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel42.setText("Street");
 
+        addnewHouseBtn.setBackground(new java.awt.Color(255, 204, 0));
+        addnewHouseBtn.setForeground(new java.awt.Color(255, 255, 255));
         addnewHouseBtn.setText("Add House");
         addnewHouseBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1887,6 +1992,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        updateHouseBtn.setBackground(new java.awt.Color(255, 204, 0));
+        updateHouseBtn.setForeground(new java.awt.Color(255, 255, 255));
         updateHouseBtn.setText("Update");
         updateHouseBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2012,18 +2119,25 @@ public class MainJFrame extends javax.swing.JFrame {
         jScrollPane6.setVisible(true);
         displaynearbyDoctor(doctorList);
         getPatientSpecificEncounters(selectedAcc.getPersonID());
+        patientTabbed.setSelectedIndex(0);
         MainPanel.setSelectedIndex(3);
     }
     public void redirectDoctor(){
         welcomeDoctor.setText("Welcome " + selectedAcc.getName());
         doctorAcc = doctorList.getDoctor(selectedAcc.getPersonID());
         displayPatients(patientDirectory);
+        submitEncounterBTN.setVisible(true);
+        doctorTabs.setSelectedIndex(0);
         MainPanel.setSelectedIndex(2);
     }
     public void redirectHospitalAdmin(){
         displayPerson(peopleList);
         deleteBtn.setVisible(false);
+        updateHouseBtn1.setVisible(false);
         loadHouses();
+        isAdmin=true;
+        communityBtn.setVisible(false);
+        adminTabs.setSelectedIndex(0);
         MainPanel.setSelectedIndex(1);
     }
     public void redirectCommunityAdmin(){
@@ -2038,6 +2152,7 @@ public class MainJFrame extends javax.swing.JFrame {
         homeBtn1.setVisible(false);
         updateHouseBtn.setVisible(false);
         addnewHouseBtn.setVisible(true);
+        communityAdminTabs.setSelectedIndex(0);
         MainPanel.setSelectedIndex(4);
     }
     public void redirectPerson(){
@@ -2070,11 +2185,15 @@ public class MainJFrame extends javax.swing.JFrame {
                 displayCommunities(communityList);
                 displayHouse(houseList);    
                 loadHouses();
+                loadHospitals();
+                isAdmin=true;
+                communityBtn.setVisible(true);
                 updateCityBtn.setVisible(false);
                 updateCommunityBtn.setVisible(false);
                 updateHouseBtn.setVisible(false);
                 addnewHouseBtn.setVisible(true);
                 homeBtn1.setVisible(true); 
+                adminTabs.setSelectedIndex(0);
                 MainPanel.setSelectedIndex(1);
                 
             } else if (user_ID == selectedAcc.getPersonID() && password.equals(selectedAcc.getPassword())) {
@@ -2115,7 +2234,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_hospitalBtnActionPerformed
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
-
+        isAdmin=false;
         MainPanel.setSelectedIndex(0);
     }//GEN-LAST:event_logoutBtnActionPerformed
 
@@ -2132,7 +2251,8 @@ public class MainJFrame extends javax.swing.JFrame {
         labelName.setText(selectedPatient.getName());
         labelGender.setText(selectedPatient.getGender());
         labelPhone.setText(selectedPatient.getPhoneNo() + "");
-        getPatientSpecificEncounters(selectedPatient.getPersonID());
+        //getPatientSpecificEncounters(selectedPatient.getPersonID());
+        getDoctorSpecificEncounters(selectedAcc.getPersonID());
         doctorTabs.setSelectedIndex(1);
     }//GEN-LAST:event_patientsListMouseClicked
 
@@ -2172,7 +2292,7 @@ public class MainJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Enter All Details");
         }
         clearVitalSigns();
-        getPatientSpecificEncounters(selectedPatient.getPersonID());
+        getDoctorSpecificEncounters(selectedAcc.getPersonID());
     }//GEN-LAST:event_submitEncounterBTNActionPerformed
 
     private void createPersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPersonBtnActionPerformed
@@ -2190,8 +2310,19 @@ public class MainJFrame extends javax.swing.JFrame {
                 patientspecificList.selectEncounter(enc);
             }
         }
+        
         displayencounterPatient(patientspecificList);
+               
         displayencounterDoctor(patientspecificList);
+    }
+    public void getDoctorSpecificEncounters(int personID) {
+        doctorspecificList = new EncounterHistory();
+        for (Encounter enc : patientspecificList.getEncounterHistory()) {
+            if (enc.getDoctor().getPersonID() == personID) {
+                doctorspecificList.selectEncounter(enc);
+            }
+        }       
+        displayencounterDoctor(doctorspecificList);
     }
     private void createPersonBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPersonBTNActionPerformed
         // TODO add your handling code here:
@@ -2202,8 +2333,12 @@ public class MainJFrame extends javax.swing.JFrame {
             if (peopleList.addPerson(person)) {
                 JOptionPane.showMessageDialog(null, "Person Created Successfully!");
                 if (person.getRole().equals("Doctor")) {
+                    String message = "Select Hospital:\n";
+                    Object[] params = {message, hospitalDropDown};
+                    JOptionPane.showConfirmDialog(null, params, "Add Hospital", JOptionPane.PLAIN_MESSAGE);
+                    Hospital hospital = (Hospital) hospitalDropDown.getSelectedItem();
                     Doctor doctor = new Doctor();
-                    doctor.createDoctor(person.getName(), person.getAge(), person.getGender(), person.getPersonID(), person.getPassword(), person.getPhoneNo(), person.getRole(), defaultdoctorID);
+                    doctor.createDoctor(person.getName(), person.getAge(), person.getGender(), person.getPersonID(), person.getPassword(), person.getPhoneNo(), person.getRole(), defaultdoctorID,hospital);
                     doctorList.addDoctor(doctor);
                 } else if (person.getRole().equals("Patient")) {
                     Patient patient = new Patient();
@@ -2357,7 +2492,11 @@ public class MainJFrame extends javax.swing.JFrame {
                 patientDirectory.removePatient(pt);
                 if(role.equals("Doctor")){
                     Doctor doc= new Doctor();
-                    doc.createDoctor(personNameTxt2.getText(), Integer.parseInt(personAgeTxt2.getText()), selectedperson.getGender(), selectedperson.getPersonID(), personPwdTxt2.getText(), Long.parseLong(personPhoneTxt2.getText()), roleDropDown1.getSelectedItem().toString(),defaultdoctorID);
+                    String message = "Select Hospital:\n";
+                    Object[] params = {message, hospitalDropDown};
+                    JOptionPane.showConfirmDialog(null, params, "Add Hospital", JOptionPane.PLAIN_MESSAGE);
+                    Hospital hospital = (Hospital) hospitalDropDown.getSelectedItem();
+                    doc.createDoctor(personNameTxt2.getText(), Integer.parseInt(personAgeTxt2.getText()), selectedperson.getGender(), selectedperson.getPersonID(), personPwdTxt2.getText(), Long.parseLong(personPhoneTxt2.getText()), roleDropDown1.getSelectedItem().toString(),defaultdoctorID,hospital);
                     doctorList.addDoctor(doc);
                 }              
             }
@@ -2376,13 +2515,17 @@ public class MainJFrame extends javax.swing.JFrame {
                     patientDirectory.addPatient(pt);
                 } 
             else if(role.equals("Doctor")){
+                    String message = "Select Hospital:\n";
+                    Object[] params = {message, hospitalDropDown};
+                    JOptionPane.showConfirmDialog(null, params, "Add Hospital", JOptionPane.PLAIN_MESSAGE);
+                    Hospital hospital = (Hospital) hospitalDropDown.getSelectedItem();
                     Doctor doc= new Doctor();
-                    doc.createDoctor(personNameTxt2.getText(), Integer.parseInt(personAgeTxt2.getText()), selectedperson.getGender(), selectedperson.getPersonID(), personPwdTxt2.getText(), Long.parseLong(personPhoneTxt2.getText()), roleDropDown1.getSelectedItem().toString(),defaultdoctorID);
+                    doc.createDoctor(personNameTxt2.getText(), Integer.parseInt(personAgeTxt2.getText()), selectedperson.getGender(), selectedperson.getPersonID(), personPwdTxt2.getText(), Long.parseLong(personPhoneTxt2.getText()), roleDropDown1.getSelectedItem().toString(),defaultdoctorID,hospital);
                     doctorList.addDoctor(doc);
                 }
             else if(roleDropDown1.getSelectedItem().toString().equals("Doctor")){
-                    Doctor doc=doctorList.getDoctor(selectedperson.getPersonID());
-                    doc.createDoctor(personNameTxt2.getText(), Integer.parseInt(personAgeTxt2.getText()), selectedperson.getGender(), selectedperson.getPersonID(), personPwdTxt2.getText(), Long.parseLong(personPhoneTxt2.getText()), roleDropDown1.getSelectedItem().toString(),defaultdoctorID);
+                    Doctor doc=doctorList.getDoctor(selectedperson.getPersonID());               
+                    doc.createDoctor(personNameTxt2.getText(), Integer.parseInt(personAgeTxt2.getText()), selectedperson.getGender(), selectedperson.getPersonID(), personPwdTxt2.getText(), Long.parseLong(personPhoneTxt2.getText()), roleDropDown1.getSelectedItem().toString(),defaultdoctorID,doc.getHospital());
                     doctorList.updateDoctor(doc,doc);
             }
             else if(roleDropDown1.getSelectedItem().toString().equals("Patient")){
@@ -2426,10 +2569,11 @@ public class MainJFrame extends javax.swing.JFrame {
         labelGender.setText(selectedPatient.getGender());
         labelPhone.setText(selectedPatient.getPhoneNo() + "");
         getPatientSpecificEncounters(selectedPatient.getPersonID());
+        submitEncounterBTN.setVisible(false);
         doctorTabs.setSelectedIndex(1);
         MainPanel.setSelectedIndex(2);
     }//GEN-LAST:event_patientListMouseClicked
-
+   
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
         MainPanel.setSelectedIndex(0);
@@ -2438,7 +2582,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private void addCommunityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCommunityBtnActionPerformed
         // TODO add your handling code here:
         communityAdminTabs.setSelectedIndex(1);
-        //loadCity();
     }//GEN-LAST:event_addCommunityBtnActionPerformed
 
     private void addCityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCityBtnActionPerformed
@@ -2454,6 +2597,7 @@ public class MainJFrame extends javax.swing.JFrame {
         displayCity(cityList);
         cityNameTxt.setText("");
         stateTxt.setText("");
+        displayCities(cityList);
         }
         else{
             JOptionPane.showMessageDialog(null,"Enter All Details");
@@ -2467,6 +2611,7 @@ public class MainJFrame extends javax.swing.JFrame {
         city.createCity(cityNameTxt.getText(),stateTxt.getText());
         cityList.updateCity(city);
         displayCity(cityList);
+        displayCities(cityList);
         cityNameTxt.setText("");
         stateTxt.setText("");
         }
@@ -2501,6 +2646,7 @@ public class MainJFrame extends javax.swing.JFrame {
         community.createCommunity(communityTxt.getText(),Integer.parseInt(ZipCodeTxt.getText()),city);
         communityList.addCommunity(community);
         displayCommunity(communityList);
+        displayCommunities(communityList);
         communityTxt.setText("");
         ZipCodeTxt.setText("");
         cityLabel.setText("");
@@ -2517,6 +2663,7 @@ public class MainJFrame extends javax.swing.JFrame {
         community.createCommunity(communityTxt.getText(),Integer.parseInt(ZipCodeTxt.getText()),city);
         communityList.updateCommunity(community);
         displayCommunity(communityList);
+        displayCommunities(communityList);
         communityTxt.setText("");
         ZipCodeTxt.setText("");
         cityLabel.setText("");
@@ -2631,7 +2778,13 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_communities1MouseClicked
 
     private void HospitalsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HospitalsMouseClicked
-        // TODO add your handling code here:
+        hospital=(Hospital) Hospitals.getValueAt(Hospitals.getSelectedRow(), 5);
+        HospitalNameTxt.setText(hospital.getHospitalName());
+        communityLabel1.setText(hospital.getCommunity().getCommunityName());
+        cityLabel2.setText(hospital.getCommunity().getCity().getCityName());
+        community=house.getCommunity();
+        addnewHospitalBtn.setVisible(false);
+        updateHouseBtn1.setVisible(true);
     }//GEN-LAST:event_HospitalsMouseClicked
 
     private void addnewHospitalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addnewHospitalBtnActionPerformed
@@ -2645,7 +2798,7 @@ public class MainJFrame extends javax.swing.JFrame {
         communityLabel1.setText("");
         cityLabel2.setText("");
         community = new Community();
-        //loadHouses();
+        loadHospitals();
         }
         else{
             JOptionPane.showMessageDialog(null,"Enter Valid Details and Select an Existing Community");
@@ -2662,12 +2815,15 @@ public class MainJFrame extends javax.swing.JFrame {
         communityLabel1.setText("");
         cityLabel2.setText("");
         community = new Community();
-        //loadHouses();
+        loadHospitals();
+        addnewHospitalBtn.setVisible(true);
+        updateHouseBtn1.setVisible(false);
         }
         else{
             JOptionPane.showMessageDialog(null,"Enter Valid Details and Select an Existing Community");
         }
     }//GEN-LAST:event_updateHouseBtn1ActionPerformed
+    
     public void displayPerson(PersonDirectory tableList) {
         DefaultTableModel model = (DefaultTableModel) personDirectory.getModel();
         model.setRowCount(0);
@@ -2725,7 +2881,7 @@ public class MainJFrame extends javax.swing.JFrame {
             row[0] = doctor.getPersonID();
             row[2] = doctor.getName();
             row[3] = doctor.getGender();
-            row[4] = doctor.getPhoneNo();
+            row[4] = doctor.getHospital().getHospitalName();
             row[1] = doctor.getDoctorID();
             row[5] = doctor;
             model.addRow(row);
@@ -2739,8 +2895,8 @@ public class MainJFrame extends javax.swing.JFrame {
             Object[] row = new Object[5];
             row[0] = doctor.getName();
             row[1] = doctor.getGender();
-            row[2] = doctor.getPhoneNo();
-            row[3] = doctor.getDoctorID();
+            row[2] = doctor.getHospital().getHospitalName();
+            row[3] = doctor.getHospital().getCommunity().getCommunityName();
             row[4] = doctor;
             model.addRow(row);
         }
@@ -2985,6 +3141,10 @@ public class MainJFrame extends javax.swing.JFrame {
         houseDropDown.setModel(new DefaultComboBoxModel(houseList.getHouseList().toArray()));
         houseDropDown.setRenderer(new HouseListrender());
     }
+    public void loadHospitals(){       
+        hospitalDropDown.setModel(new DefaultComboBoxModel(hospitalList.getHospitalList().toArray()));
+        hospitalDropDown.setRenderer(new HospitalListrender());
+    }
     
     public final void samplemockData() {
          City city=new City();
@@ -3002,12 +3162,18 @@ public class MainJFrame extends javax.swing.JFrame {
         house1.createHouse("Berkley", 66, community1);
         houseList.addHouse(house);
         houseList.addHouse(house1);
+        Hospital hospital = new Hospital();
+        hospital.createHospital("AAA", community);
+        Hospital hospital1 = new Hospital();
+        hospital1.createHospital("RRR", community);
+        hospitalList.addHospital(hospital);
+        hospitalList.addHospital(hospital1);
         
         Person sample = new Person();
         sample.createPerson("Jhon", 24, "Male", defaultpersonID, "Test", 987654321, "Doctor", house);
         peopleList.addPerson(sample);
         Doctor sampleDoc = new Doctor();
-        sampleDoc.createDoctor("Jhon", 24, "Male", sample.getPersonID(), "Test", 987654321, "Doctor", defaultdoctorID);
+        sampleDoc.createDoctor("Jhon", 24, "Male", sample.getPersonID(), "Test", 987654321, "Doctor", defaultdoctorID,hospital);
         doctorList.addDoctor(sampleDoc);
         Person sample1 = new Person();
         sample1.createPerson("Doe", 20, "Female", defaultpersonID, "Test", 987654321, "Person", house);
@@ -3028,7 +3194,7 @@ public class MainJFrame extends javax.swing.JFrame {
         sample5.createPerson("Daniel", 24, "Male", defaultpersonID, "Test", 987654321, "Doctor", house1);
         peopleList.addPerson(sample5);
         Doctor sampleDoc1 = new Doctor();
-        sampleDoc1.createDoctor("Daniel", 24, "Male", sample5.getPersonID(), "Test", 987654321, "Doctor", defaultdoctorID);
+        sampleDoc1.createDoctor("Daniel", 24, "Male", sample5.getPersonID(), "Test", 987654321, "Doctor", defaultdoctorID,hospital1);
         doctorList.addDoctor(sampleDoc1);
         Person sample6 = new Person();
         sample6.createPerson("Daniel", 24, "Male", defaultpersonID, "Test", 987654321, "Patient", house1);
@@ -3036,9 +3202,7 @@ public class MainJFrame extends javax.swing.JFrame {
         Patient samplepatient1 = new Patient();
         samplepatient1.createPatient("Daniel", 24, "Male", sample6.getPersonID(), "Test", 987654321, "Patient", defaultpatientID);
         patientDirectory.addPatient(samplepatient1);
-        
-       
-        
+     
     }
 
     public static void main(String args[]) {
@@ -3072,7 +3236,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    private javax.swing.JComboBox<String> hospitalDropDown;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Community;
     private javax.swing.JTable DoctorList;
