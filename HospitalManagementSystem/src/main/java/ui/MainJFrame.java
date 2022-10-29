@@ -59,6 +59,7 @@ public class MainJFrame extends javax.swing.JFrame {
         cityList = new CityList(); 
         communityList= new CommunityList();
         houseList = new HouseDirectory();
+        hospitalList = new HospitalDirectory();
         radioButtons();
         samplemockData();
     }
@@ -868,7 +869,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel45.setText("Community");
 
-        jLabel46.setText("Apartment");
+        jLabel46.setText("Hospital Name");
 
         addnewHospitalBtn.setText("Add Hospital");
         addnewHospitalBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -2110,7 +2111,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_LogInActionPerformed
 
     private void hospitalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalBtnActionPerformed
-        // TODO add your handling code here:
+       adminTabs.setSelectedIndex(5);
     }//GEN-LAST:event_hospitalBtnActionPerformed
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
@@ -2301,7 +2302,7 @@ public class MainJFrame extends javax.swing.JFrame {
         JOptionPane.showConfirmDialog(null, params, "New Appoinment", JOptionPane.PLAIN_MESSAGE);
         if (jd.getDate() != null) {
             if(selectedAcc.getRole().equals("Person")){
-                selectedAcc.createPerson(selectedAcc.getName(), selectedAcc.getAge(), selectedAcc.getGender(), selectedAcc.getPersonID(), selectedAcc.getPassword(), selectedAcc.getPhoneNo(), "Patient", null);
+                selectedAcc.createPerson(selectedAcc.getName(), selectedAcc.getAge(), selectedAcc.getGender(), selectedAcc.getPersonID(), selectedAcc.getPassword(), selectedAcc.getPhoneNo(), "Patient", selectedAcc.getHouse());
                 Patient newpatient = new Patient();
                 newpatient.createPatient(selectedAcc.getName(), selectedAcc.getAge(), selectedAcc.getGender(), selectedAcc.getPersonID(), selectedAcc.getPassword(), selectedAcc.getPhoneNo(), "Patient",defaultpatientID);
                 patientDirectory.addPatient(newpatient);
@@ -2349,7 +2350,7 @@ public class MainJFrame extends javax.swing.JFrame {
                role= roleDropDown1.getSelectedItem().toString();
                previousRole=selectedperson.getRole();
             }
-            selectedperson.createPerson(personNameTxt2.getText(), Integer.parseInt(personAgeTxt2.getText()), selectedperson.getGender(), selectedperson.getPersonID(), personPwdTxt2.getText(), Long.parseLong(personPhoneTxt2.getText()), roleDropDown1.getSelectedItem().toString(), null);
+            selectedperson.createPerson(personNameTxt2.getText(), Integer.parseInt(personAgeTxt2.getText()), selectedperson.getGender(), selectedperson.getPersonID(), personPwdTxt2.getText(), Long.parseLong(personPhoneTxt2.getText()), roleDropDown1.getSelectedItem().toString(), selectedperson.getHouse());
             peopleList.updatePerson(selectedperson, selectedperson);
             if(previousRole.equals("Patient")){
                 Patient pt=patientDirectory.getPatient(selectedperson.getPersonID());
@@ -2624,7 +2625,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void communities1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_communities1MouseClicked
         // TODO add your handling code here:
-        community=(Community) communities.getValueAt(communities.getSelectedRow(), 2);
+        community=(Community) communities1.getValueAt(communities1.getSelectedRow(), 2);
         communityLabel1.setText(community.getCommunityName());
         cityLabel2.setText(community.getCity().getCityName());
     }//GEN-LAST:event_communities1MouseClicked
@@ -2639,7 +2640,7 @@ public class MainJFrame extends javax.swing.JFrame {
         Hospital hospital=new Hospital();
         hospital.createHospital(HospitalNameTxt.getText(),community);
         hospitalList.addHospital(hospital);
-        //displayHouse(houseList);
+        displayHospitals(hospitalList);
         HospitalNameTxt.setText("");
         communityLabel1.setText("");
         cityLabel2.setText("");
@@ -2656,7 +2657,7 @@ public class MainJFrame extends javax.swing.JFrame {
         Hospital hospital=new Hospital();
         hospital.createHospital(HospitalNameTxt.getText(),community);
         hospitalList.updateHospital(hospital);
-        //displayHouse(houseList);
+        displayHospitals(hospitalList);
         HospitalNameTxt.setText("");
         communityLabel1.setText("");
         cityLabel2.setText("");
@@ -2822,6 +2823,15 @@ public class MainJFrame extends javax.swing.JFrame {
             row[2] = community;
             model.addRow(row);
         }
+        model = (DefaultTableModel) communities1.getModel();
+        model.setRowCount(0);
+        for (Community community : tableList.getCommunityList()) {
+            Object[] row = new Object[3];
+            row[0] = community.getCommunityName();
+            row[1] = community.getCity().getCityName();           
+            row[2] = community;
+            model.addRow(row);
+        }
     }
     public void displayHouse(HouseDirectory tableList) {
         DefaultTableModel model = (DefaultTableModel) House.getModel();
@@ -2837,6 +2847,20 @@ public class MainJFrame extends javax.swing.JFrame {
             row[6]=house;
             model.addRow(row);
         }
+    }
+     private void displayHospitals(HospitalDirectory tableList) {
+      DefaultTableModel model = (DefaultTableModel) Hospitals.getModel();
+        model.setRowCount(0);
+        for (Hospital hospital : tableList.getHospitalList()) {
+            Object[] row = new Object[6];
+            row[0] = hospital.getHospitalName();
+            row[1]=hospital.getCommunity().getCommunityName();
+            row[2]=hospital.getCommunity().getZipCode();
+            row[3]=hospital.getCommunity().getCity().getCityName();
+            row[4]=hospital.getCommunity().getCity().getState();
+            row[5]=hospital;
+            model.addRow(row);
+        } 
     }
 
     private boolean isInteger(String txtField) {
@@ -3235,5 +3259,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel welcomeLBL;
     private javax.swing.JPanel workArea;
     // End of variables declaration//GEN-END:variables
+
+   
 }
 

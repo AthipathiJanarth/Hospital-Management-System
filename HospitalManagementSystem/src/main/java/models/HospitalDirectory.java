@@ -18,7 +18,12 @@ public class HospitalDirectory {
     public void setHospitalList(ArrayList<Hospital> hospitalList) {
         this.hospitalList = hospitalList;
     }
-     private ArrayList<Hospital> hospitalList = new ArrayList<Hospital>();
+     private ArrayList<Hospital> hospitalList;
+
+    public HospitalDirectory() {
+        this.hospitalList = new ArrayList<Hospital>();
+    }
+     
       public boolean addHospital(Hospital hospital) {
         return hospitalList.add(hospital);
     }

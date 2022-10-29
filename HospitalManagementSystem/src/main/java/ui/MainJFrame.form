@@ -1239,7 +1239,7 @@
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel46">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Apartment"/>
+                                <Property name="text" type="java.lang.String" value="Hospital Name"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JButton" name="addnewHospitalBtn">
