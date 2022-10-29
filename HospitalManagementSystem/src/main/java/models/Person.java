@@ -38,7 +38,11 @@ public class Person {
         return password;
     }
 
-    public void createPerson(String name, int age, String gender, int personID, String password, long phoneNo,String role) {
+    public House getHouse() {
+        return house;
+    }
+
+    public void createPerson(String name, int age, String gender, int personID, String password, long phoneNo, String role, House house) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -46,6 +50,7 @@ public class Person {
         this.password = password;
         this.phoneNo = phoneNo;
         this.role= role;
+        this.house =house;
     }
     public void updatePerson(String name, int age, String password, long phoneNo) {
         this.name = name;
@@ -61,5 +66,5 @@ public class Person {
     protected String password;
     protected long phoneNo;
     protected String role;
-    
+    protected House house;
 }

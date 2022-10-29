@@ -41,7 +41,7 @@ public class DoctorDirectory {
         return doctor;
     }
 
-    public void updatePatient(Doctor old, Doctor newDoctor) {
+    public void updateDoctor(Doctor old, Doctor newDoctor) {
         int index = doctorList.indexOf(old);
         System.out.println(index);
         doctorList.set(index, newDoctor);

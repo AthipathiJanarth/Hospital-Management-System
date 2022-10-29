@@ -19,4 +19,8 @@ public class CityList {
      public boolean addCity(City city) {
         return cityList.add(city);
     }
+     public void updateCity(City city) {
+        int index = cityList.indexOf(city);
+        cityList.set(index, city);
+    }
 }

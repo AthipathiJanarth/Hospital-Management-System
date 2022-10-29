@@ -15,10 +15,16 @@ public class HospitalDirectory {
     public ArrayList<Hospital> getHospitalList() {
         return hospitalList;
     }
-
     public void setHospitalList(ArrayList<Hospital> hospitalList) {
         this.hospitalList = hospitalList;
     }
-     private ArrayList<Hospital> hospitalList;
+     private ArrayList<Hospital> hospitalList = new ArrayList<Hospital>();
+      public boolean addHospital(Hospital hospital) {
+        return hospitalList.add(hospital);
+    }
+     public void updateHospital(Hospital hospital) {
+        int index = hospitalList.indexOf(hospital);
+        hospitalList.set(index, hospital);
+    }
 
 }

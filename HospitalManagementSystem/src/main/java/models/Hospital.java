@@ -10,6 +10,20 @@ package models;
  */
 public class Hospital {
     private String hospitalName;
-    private int hospitalID;
     private Community community;
+
+    public void createHospital(String hospitalName, Community community) {
+        this.hospitalName = hospitalName;
+        this.community = community;
+    }
+
+    public String getHospitalName() {
+        return hospitalName;
+    }
+
+    public Community getCommunity() {
+        return community;
+    }
+    
+    
 }
