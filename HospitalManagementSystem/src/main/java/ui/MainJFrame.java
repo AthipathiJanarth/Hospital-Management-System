@@ -64,6 +64,7 @@ public class MainJFrame extends javax.swing.JFrame {
         communityList= new CommunityList();
         houseList = new HouseDirectory();
         hospitalList = new HospitalDirectory();
+        patientspecificList= new EncounterHistory();
         radioButtons();
         samplemockData();
     }
@@ -195,6 +196,8 @@ public class MainJFrame extends javax.swing.JFrame {
         previousEncounters = new javax.swing.JTable();
         jLabel21 = new javax.swing.JLabel();
         editProfileBtn = new javax.swing.JButton();
+        communityDoctor = new javax.swing.JButton();
+        communitySearch = new javax.swing.JTextField();
         patientProfilePage = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
@@ -1391,20 +1394,39 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        communityDoctor.setBackground(new java.awt.Color(255, 255, 102));
+        communityDoctor.setText("Near Me");
+        communityDoctor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                communityDoctorActionPerformed(evt);
+            }
+        });
+
+        communitySearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                communitySearchKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout patientLandingPageLayout = new javax.swing.GroupLayout(patientLandingPage);
         patientLandingPage.setLayout(patientLandingPageLayout);
         patientLandingPageLayout.setHorizontalGroup(
             patientLandingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientLandingPageLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(editProfileBtn)
-                .addGap(32, 32, 32))
             .addGroup(patientLandingPageLayout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(patientLandingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(93, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, patientLandingPageLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(patientLandingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(communitySearch, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(patientLandingPageLayout.createSequentialGroup()
+                        .addComponent(communityDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70)
+                        .addComponent(editProfileBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(59, 59, 59))
             .addGroup(patientLandingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(patientLandingPageLayout.createSequentialGroup()
                     .addGap(54, 54, 54)
@@ -1414,9 +1436,13 @@ public class MainJFrame extends javax.swing.JFrame {
         patientLandingPageLayout.setVerticalGroup(
             patientLandingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(patientLandingPageLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(editProfileBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(238, 238, 238)
+                .addGap(23, 23, 23)
+                .addGroup(patientLandingPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editProfileBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(communityDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(communitySearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(210, 210, 210)
                 .addComponent(jLabel21)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2251,7 +2277,7 @@ public class MainJFrame extends javax.swing.JFrame {
         labelName.setText(selectedPatient.getName());
         labelGender.setText(selectedPatient.getGender());
         labelPhone.setText(selectedPatient.getPhoneNo() + "");
-        //getPatientSpecificEncounters(selectedPatient.getPersonID());
+        getPatientSpecificEncounters(selectedPatient.getPersonID());
         getDoctorSpecificEncounters(selectedAcc.getPersonID());
         doctorTabs.setSelectedIndex(1);
     }//GEN-LAST:event_patientsListMouseClicked
@@ -2292,6 +2318,7 @@ public class MainJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Enter All Details");
         }
         clearVitalSigns();
+        getPatientSpecificEncounters(selectedPatient.getPersonID());
         getDoctorSpecificEncounters(selectedAcc.getPersonID());
     }//GEN-LAST:event_submitEncounterBTNActionPerformed
 
@@ -2305,7 +2332,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_roleDropDownActionPerformed
     public void getPatientSpecificEncounters(int personID) {
         patientspecificList = new EncounterHistory();
-        for (Encounter enc : encounterList.getEncounterHistory()) {
+        for (Encounter enc : encounterList.getEncounterHistory()) {            
             if (enc.getPatient().getPersonID() == personID) {
                 patientspecificList.selectEncounter(enc);
             }
@@ -2313,7 +2340,7 @@ public class MainJFrame extends javax.swing.JFrame {
         
         displayencounterPatient(patientspecificList);
                
-        displayencounterDoctor(patientspecificList);
+        //displayencounterDoctor(patientspecificList);
     }
     public void getDoctorSpecificEncounters(int personID) {
         doctorspecificList = new EncounterHistory();
@@ -2719,7 +2746,6 @@ public class MainJFrame extends javax.swing.JFrame {
         house=(House) House.getValueAt(House.getSelectedRow(), 6);
         apartmentTxt.setText(house.getDoorNo()+"");
         StreetTxt.setText(house.getStreetName());
-        System.out.println(house.getCommunity().getCommunityName());
         communityLabel.setText(house.getCommunity().getCommunityName());
         cityLabel1.setText(house.getCommunity().getCity().getCityName());
         community=house.getCommunity();
@@ -2823,6 +2849,32 @@ public class MainJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Enter Valid Details and Select an Existing Community");
         }
     }//GEN-LAST:event_updateHouseBtn1ActionPerformed
+
+    private void communityDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_communityDoctorActionPerformed
+        DoctorDirectory nearList = new DoctorDirectory();
+        for (Doctor doc : doctorList.getDoctorList()){
+            if(doc.getHospital().getCommunity().getCommunityName().equals(selectedAcc.getHouse().getCommunity().getCommunityName())){
+            nearList.addDoctor(doc);
+            }
+        }
+        displaynearbyDoctor(nearList);
+    }//GEN-LAST:event_communityDoctorActionPerformed
+
+    private void communitySearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_communitySearchKeyReleased
+        // TODO add your handling code here:
+        DoctorDirectory nearList = new DoctorDirectory();
+        if(!communitySearch.getText().isEmpty()){
+        for (Doctor doc : doctorList.getDoctorList()){
+            if(doc.getHospital().getCommunity().getCommunityName().contains(communitySearch.getText())){
+            nearList.addDoctor(doc);
+            }
+        }
+        displaynearbyDoctor(nearList);
+        }
+        else{
+            displaynearbyDoctor(doctorList);
+        }
+    }//GEN-LAST:event_communitySearchKeyReleased
     
     public void displayPerson(PersonDirectory tableList) {
         DefaultTableModel model = (DefaultTableModel) personDirectory.getModel();
@@ -3165,7 +3217,7 @@ public class MainJFrame extends javax.swing.JFrame {
         Hospital hospital = new Hospital();
         hospital.createHospital("AAA", community);
         Hospital hospital1 = new Hospital();
-        hospital1.createHospital("RRR", community);
+        hospital1.createHospital("RRR", community1);
         hospitalList.addHospital(hospital);
         hospitalList.addHospital(hospital1);
         
@@ -3188,7 +3240,7 @@ public class MainJFrame extends javax.swing.JFrame {
         sample4.createPerson("Joe", 24, "Male", defaultpersonID, "Test", 987654321, "Patient", house);
         peopleList.addPerson(sample4);
         Patient samplepatient = new Patient();
-        samplepatient.createPatient("Joe", 24, "Male", sample.getPersonID(), "Test", 987654321, "Doctor", defaultpatientID);
+        samplepatient.createPatient("Joe", 24, "Male", sample4.getPersonID(), "Test", 987654321, "Doctor", defaultpatientID);
         patientDirectory.addPatient(samplepatient);
         Person sample5 = new Person();
         sample5.createPerson("Daniel", 24, "Male", defaultpersonID, "Test", 987654321, "Doctor", house1);
@@ -3197,10 +3249,10 @@ public class MainJFrame extends javax.swing.JFrame {
         sampleDoc1.createDoctor("Daniel", 24, "Male", sample5.getPersonID(), "Test", 987654321, "Doctor", defaultdoctorID,hospital1);
         doctorList.addDoctor(sampleDoc1);
         Person sample6 = new Person();
-        sample6.createPerson("Daniel", 24, "Male", defaultpersonID, "Test", 987654321, "Patient", house1);
+        sample6.createPerson("Diya", 24, "Female", defaultpersonID, "Test", 987654321, "Patient", house1);
         peopleList.addPerson(sample6);
         Patient samplepatient1 = new Patient();
-        samplepatient1.createPatient("Daniel", 24, "Male", sample6.getPersonID(), "Test", 987654321, "Patient", defaultpatientID);
+        samplepatient1.createPatient("Diya", 24, "Female", sample6.getPersonID(), "Test", 987654321, "Patient", defaultpatientID);
         patientDirectory.addPatient(samplepatient1);
      
     }
@@ -3276,9 +3328,11 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane communityAdminTabs;
     private javax.swing.JPanel communityAdminWorkArea;
     private javax.swing.JButton communityBtn;
+    private javax.swing.JButton communityDoctor;
     private javax.swing.JLabel communityLabel;
     private javax.swing.JLabel communityLabel1;
     private javax.swing.JPanel communityPanel;
+    private javax.swing.JTextField communitySearch;
     private javax.swing.JTextField communityTxt;
     private javax.swing.JPanel createPerson;
     private javax.swing.JButton createPersonBTN;
