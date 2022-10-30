@@ -2332,15 +2332,14 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_roleDropDownActionPerformed
     public void getPatientSpecificEncounters(int personID) {
         patientspecificList = new EncounterHistory();
-        for (Encounter enc : encounterList.getEncounterHistory()) {            
-            if (enc.getPatient().getPersonID() == personID) {
+        for (Encounter enc : encounterList.getEncounterHistory()) {               
+            if (enc.getPatient().getPersonID() == personID) {                
                 patientspecificList.selectEncounter(enc);
             }
         }
         
         displayencounterPatient(patientspecificList);
-               
-        //displayencounterDoctor(patientspecificList);
+          if(isAdmin){displayencounterDoctor(patientspecificList);}
     }
     public void getDoctorSpecificEncounters(int personID) {
         doctorspecificList = new EncounterHistory();
